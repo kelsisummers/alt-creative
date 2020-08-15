@@ -1,1 +1,31 @@
-.Services {}
+.Services {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  padding-top: 240px;
+  justify-content: space-around;
+
+  &__container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  &__header {
+    h1 {
+      padding-right: 1rem
+    }
+  }
+
+  &__col {
+    padding-right: 2rem;
+    width: 33%;
+    max-width: 320px;
+    min-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    p {
+      font-weight: 300;
+    }
+  }
+}

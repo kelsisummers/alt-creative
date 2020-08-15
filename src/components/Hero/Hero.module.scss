@@ -1,1 +1,18 @@
-.Hero {}
+.Hero {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 300px;
+  
+  h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-left: 3.75rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    padding: 0 0 1.25rem 3.75rem;
+  }
+}
