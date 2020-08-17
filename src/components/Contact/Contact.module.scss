@@ -1,57 +1,62 @@
-// .Contact {
-//   /* Contact */
-// #contact {
-//   flex: 0 1 30%;
-//   align-self: flex-end;
-//   justify-content: left;
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding-top: 100px;
-// }
+.Contact {
+  margin-top: 100px;
+  padding-top: 140px;
+  
+  h1 {
+    margin-left: 80px;
+  }
 
-// #contact form {
-//   display: inline-flex;
-//   flex-direction: column;
-//   min-width: 80%;
-// }
+  h2 {
+    font-size: 2em;
+    margin-left: 200px;
+    margin-top: 40px;
+  }
 
-// input[type=text], input[type=email] {
-//   height: 40px;
-//   padding: 12px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px; 
-//   box-sizing: border-box;
-//   margin-top: .5rem;
-//   margin-bottom: 1.5rem;
-//   min-width: 300px;
-// }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-// textarea {
-//   height: 200px;
-//   padding: 12px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-//   box-sizing: border-box;
-//   margin-top: .5rem;
-//   resize: none;
-//   min-width: 300px;
-// }
+  input[type=text], input[type=email] {
+    height: 40px;
+    padding: .75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+    min-width: 300px;
+  }
 
-// input[type=submit] {
-//   width: 145px;
-//   height: 45px;
-//   background-color: #000;
-//   color: #fff;
-//   border-radius: 4px;
-//   border: none;
-//   align-self: center;
-//   margin-top: 2.5rem;
-//   /* margin-bottom: 2.5rem; */
-//   font-weight: 300;
-// }
+  textarea {
+    height: 200px;
+    padding: .75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: .5rem;
+    resize: none;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-// ::placeholder {
-//   font-weight: 300;
-//   font-size: .8rem;
-// }
-// }
+  input[type=submit] {
+    width: 145px;
+    height: 45px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    align-self: center;
+    margin-top: 2.5rem;
+    font-weight: 300;
+  }
+
+  ::placeholder {
+    font-weight: 300;
+    font-size: .8rem;
+  }
+}

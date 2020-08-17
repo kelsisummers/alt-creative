@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './Contact.module.scss';
 
 const Contact = () => (
-  <div className={styles.Contact}>
-        <div id="contact">
+  <div className={styles.Contact} id="contact">
       <h1>Contact</h1>
+      <h2>work with us</h2>
       <form action="/action_page.php">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Name" />
@@ -17,7 +17,6 @@ const Contact = () => (
         <textarea id="message" name="message" placeholder="Type message here"></textarea>
         <input type="submit" value="Send" />
       </form>
-    </div>
   </div>
 );
 

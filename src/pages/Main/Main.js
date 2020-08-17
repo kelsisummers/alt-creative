@@ -4,7 +4,7 @@ import React from 'react';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
 import About from '../../components/About';
-// import Contact from '../../components/Contact';
+import Contact from '../../components/Contact';
 
 export default function Main() {
   return (
@@ -12,7 +12,7 @@ export default function Main() {
       <Hero />
       <Services />
       <About />
-      {/* <Contact /> */}
+      <Contact />
     </div>
   )
 }
