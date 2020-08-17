@@ -1,24 +1,27 @@
 .Services {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   width: 100vw;
   margin-top: 100px;
   padding-top: 140px;
-  justify-content: space-around;
+
+  &__header{
+    margin-left: 80px;
+  }
 
   &__container {
-    display: inline-flex;
-    flex-wrap: wrap;
-    margin-top: 2.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 20%;
+    margin-right: auto;
+    margin: 2% auto 0 20%;
   }
 
   &__col {
+    flex: 1;
     padding-right: 2rem;
-    width: 33%;
-    max-width: 320px;
+    max-width: 400px;
     min-width: 300px;
-    margin-right: auto;
-    margin-left: auto;
     p {
       font-weight: 300;
     }

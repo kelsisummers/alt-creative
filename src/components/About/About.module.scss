@@ -12,12 +12,12 @@
     margin-left: 140px;
     margin-top: 80px;
     display: flex;
-    flex-direction: row wrap;
+    flex-flow: row wrap;
 
     img {
       width: 50%;
       max-width: 983px;
-      min-width: 0;
+      min-width: 300px;
       margin-right: 80px;
     }
     
