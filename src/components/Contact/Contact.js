@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './Contact.module.scss';
 
 const Contact = () => (
   <div className={styles.Contact} id="contact">
       <h1>Contact</h1>
       <h2>work with us</h2>
-      <form action="/action_page.php">
+      <form>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Name" />
         <label htmlFor="email">Email</label>
@@ -20,8 +20,8 @@ const Contact = () => (
   </div>
 );
 
-Contact.propTypes = {};
+// Contact.propTypes = {};
 
-Contact.defaultProps = {};
+// Contact.defaultProps = {};
 
 export default Contact;
