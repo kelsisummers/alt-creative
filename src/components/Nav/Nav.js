@@ -6,7 +6,7 @@ const Nav = () => (
   <div className={styles.Nav}>
     <nav>
       <div class="nav__logo">
-        <a href="" class="">
+        <a href="/">
           <img src="../assets/logo.png"  alt="Alt Creative Logo" />
         </a>
       </div>

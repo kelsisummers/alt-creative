@@ -1,9 +1,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import styles from './Main.module.scss';
+// import styles from './Main.module.scss';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
-// import About from '../../components/About';
+import About from '../../components/About';
 // import Contact from '../../components/Contact';
 
 export default function Main() {
@@ -11,7 +11,7 @@ export default function Main() {
     <div>
       <Hero />
       <Services />
-      {/* <About /> */}
+      <About />
       {/* <Contact /> */}
     </div>
   )
