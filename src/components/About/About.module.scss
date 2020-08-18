@@ -1,6 +1,7 @@
 .About {
     display: flex;
     flex-flow: column wrap;
+    // Values changing w/ animation?
     margin-top: 100px;
     padding-top: 140px;
 
@@ -9,22 +10,25 @@
   }
 
   &__content {
-    margin-left: 140px;
-    margin-top: 80px;
     display: flex;
     flex-flow: row wrap;
+      // Values changing w/ animation?
+      margin-left: 140px;
+      margin-top: 80px;
 
     img {
       width: 50%;
       max-width: 983px;
       min-width: 300px;
-      margin-right: 80px;
       align-self: start;
+      // Value changing w/ animation?      
+      margin-right: 80px;
     }
     
     p {
       flex: 1;
       align-self: flex-end;
+      // Values changing w/ animation?
       margin-bottom: 40px;
       margin-right: 80px;
     }

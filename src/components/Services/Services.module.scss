@@ -1,11 +1,11 @@
 .Services {
   display: flex;
   flex-flow: column wrap;
-  width: 100vw;
+  // Values changing w/ animation?      
   margin-top: 100px;
   padding-top: 140px;
 
-  &__header{
+  &__header {
     margin-left: 80px;
   }
 
@@ -15,15 +15,14 @@
     margin-left: 20%;
     margin-right: auto;
     margin: 2% auto 0 20%;
-  }
-
-  &__col {
-    flex: 1;
-    padding-right: 2rem;
-    max-width: 400px;
-    min-width: 300px;
-    p {
-      font-weight: 300;
+    .col {
+      flex: 1;
+      padding-right: 2rem;
+      max-width: 400px;
+      min-width: 300px;
+      p {
+        font-weight: 300;
+      }
     }
   }
 }
