@@ -15,14 +15,15 @@
     margin-left: 20%;
     margin-right: auto;
     margin: 2% auto 0 20%;
-    .col {
-      flex: 1;
-      padding-right: 2rem;
-      max-width: 400px;
-      min-width: 300px;
-      p {
-        font-weight: 300;
-      }
+  }
+
+  &__col {
+    flex: 1;
+    padding-right: 2rem;
+    max-width: 400px;
+    min-width: 300px;
+    p {
+      font-weight: 300;
     }
   }
 }
