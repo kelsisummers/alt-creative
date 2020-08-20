@@ -7,7 +7,7 @@ const Nav = () => (
     <nav>
       <div class={styles.Nav__logo}>
         <a href="/">
-          <img src="../assets/logo.png"  alt="Alt Creative Logo" />
+          <img src="../assets/logo.svg"  alt="Alt Creative Logo" />
         </a>
       </div>
       <div>

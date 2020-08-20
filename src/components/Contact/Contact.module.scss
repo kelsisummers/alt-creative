@@ -1,3 +1,6 @@
+// Adobe Font
+@import url("https://use.typekit.net/jhd6tvc.css");
+
 .Contact {
   margin-top: 100px;
   padding-top: 140px;
@@ -10,6 +13,7 @@
     font-size: 2em;
     margin-left: 200px;
     margin-top: 40px;
+    font-weight: 300;
   }
 
   form {
@@ -29,6 +33,7 @@
     margin-top: .5rem;
     margin-bottom: 1.5rem;
     min-width: 300px;
+    font-family: 'proxima-nova', sans-serif;
   }
 
   textarea {
@@ -40,7 +45,7 @@
     margin-top: .5rem;
     resize: none;
     min-width: 300px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'proxima-nova', sans-serif;
   }
 
   input[type=submit] {
@@ -52,11 +57,12 @@
     border: none;
     align-self: center;
     margin-top: 2.5rem;
-    font-weight: 300;
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   ::placeholder {
     font-weight: 300;
-    font-size: .8rem;
+    font-size: .875 rem;
   }
 }
