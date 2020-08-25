@@ -4,6 +4,8 @@
   // Values changing w/ animation?      
   margin-top: 100px;
   padding-top: 140px;
+  position: relative;
+  flex: 1;
 
   &__header {
     margin-left: 80px;
