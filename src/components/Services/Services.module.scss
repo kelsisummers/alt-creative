@@ -1,11 +1,31 @@
 .Services {
   display: flex;
   flex-flow: column wrap;
-  // Values changing w/ animation?      
-  margin-top: 100px;
-  padding-top: 140px;
   position: relative;
-  flex: 1;
+  flex: 1 60vh;
+  // border: 1px solid black;
+
+  &__animation {
+    width: 100%;
+    position: absolute;
+    top: 60%;
+  }
+
+  &__copy {
+    display: flex;
+    position: absolute;
+    bottom: 16%;
+    flex-flow: column;
+    .col {
+      flex: 1;
+      padding-right: 2rem;
+      max-width: 400px;
+      min-width: 300px;
+      p {
+        font-weight: 300;
+      }
+    }
+  }
 
   &__header {
     margin-left: 80px;
@@ -14,18 +34,6 @@
   &__container {
     display: flex;
     flex-flow: row wrap;
-    margin-left: 20%;
-    margin-right: auto;
-    margin: 2% auto 0 20%;
-  }
-
-  .col {
-    flex: 1;
-    padding-right: 2rem;
-    max-width: 400px;
-    min-width: 300px;
-    p {
-      font-weight: 300;
-    }
+    margin-left: 21%;
   }
 }
