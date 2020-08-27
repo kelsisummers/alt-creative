@@ -6,17 +6,22 @@ import styles from './Hero.module.scss';
 export default class Hero extends React.Component {
     componentDidMount() {
     // Get a reference to the <path>
-    let path = document.querySelector('#hero-path');
+    const heroPath = document.querySelector('#hero-path');
+
+    // let heightOutput = document.documentElement.clientHeight;
+    let widthOutput = document.documentElement.clientWidth;
+    // console.log(`initial value: ${heightOutput} & ${widthOutput}`);
+
 
     // Get length of path... ~577px in this case
-    let pathLength = path.getTotalLength() + 5000;
+    let pathLength = heroPath.getTotalLength() + (widthOutput + 5000);
 
     // Make very long dashes (the length of the path itself)
-    path.style.strokeDasharray = pathLength + ' ' + pathLength;
+    heroPath.style.strokeDasharray = pathLength + ' ' + pathLength;
     // Offset the dashes so the it appears hidden entirely
-    path.style.strokeDashoffset = pathLength;
+    heroPath.style.strokeDashoffset = pathLength;
 
-    path.getBoundingClientRect()
+    heroPath.getBoundingClientRect()
 
     // When the page scrolls...
     window.addEventListener("scroll", function(e) {
@@ -25,17 +30,17 @@ export default class Hero extends React.Component {
       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
         
       // Length to offset the dashes
-      let drawLength = (pathLength * scrollPercentage) * 10;
+      let drawLength = (pathLength * scrollPercentage) * 5;
       
       // Draw in reverse
-      path.style.strokeDashoffset = pathLength - drawLength;
+      heroPath.style.strokeDashoffset = pathLength - drawLength;
         
       // When complete, remove the dash array, otherwise shape isn't quite sharp
       if (scrollPercentage >= .99) {
-        path.style.strokeDasharray = 'none';
+        heroPath.style.strokeDasharray = 'none';
         
       } else {
-        path.style.strokeDasharray = pathLength + ' ' + pathLength;
+        heroPath.style.strokeDasharray = pathLength + ' ' + pathLength;
       }
       
     });
