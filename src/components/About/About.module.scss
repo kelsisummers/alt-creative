@@ -1,10 +1,15 @@
 .About {
     display: flex;
     flex-flow: column wrap;
-    // Values changing w/ animation?
+    position: relative;
+    flex: 1 60vh;
     margin-top: 100px;
-    padding-top: 140px;
-    flex: 1;
+    // border: 1px solid black;
+  
+    &__animation {
+      width: 100%;
+      position: absolute;
+    }
 
   &__header {
     margin-left: 80px;
@@ -13,8 +18,7 @@
   &__content {
     display: flex;
     flex-flow: row wrap;
-      // Values changing w/ animation?
-      margin-left: 140px;
+      margin-left: 8.5%;
       margin-top: 80px;
 
     img {
@@ -23,13 +27,12 @@
       min-width: 300px;
       align-self: start;
       // Value changing w/ animation?      
-      margin-right: 80px;
+      margin-right: 47px;
     }
     
     p {
       flex: 1;
       align-self: flex-end;
-      // Values changing w/ animation?
       margin-bottom: 40px;
       margin-right: 80px;
       font-weight: 300;

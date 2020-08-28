@@ -3,22 +3,23 @@
   flex-flow: column wrap;
   position: relative;
   flex: 1 60vh;
-  // border: 1px solid black;
+  width: 100vw;
 
   &__animation {
     width: 100%;
     position: absolute;
-    top: 60%;
+    top: 45%;
   }
 
-  &__copy {
+  &__container {
     display: flex;
     position: absolute;
     bottom: 16%;
     flex-flow: column;
+    width: 100%;
     .col {
       flex: 1;
-      padding-right: 2rem;
+      padding-right: 1.75rem;
       max-width: 400px;
       min-width: 300px;
       p {
@@ -31,9 +32,13 @@
     margin-left: 80px;
   }
 
-  &__container {
+  &__copy {
     display: flex;
     flex-flow: row wrap;
     margin-left: 21%;
+    margin-top: 30px;
+    margin-right: 3%;
+    margin-bottom: 30px;
   }
+
 }
