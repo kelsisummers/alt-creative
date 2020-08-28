@@ -32,7 +32,7 @@ export default class Contact extends React.Component {
       let scrollOffset = scrollPercentage - .50;
 
       // Length to offset the dashes
-      let drawLength = (pathLength * scrollOffset) * 2.6 ;
+      let drawLength = (pathLength * scrollOffset) * 3 ;
       
       // Draw in reverse
       contactPath.style.strokeDashoffset = pathLength - drawLength;
