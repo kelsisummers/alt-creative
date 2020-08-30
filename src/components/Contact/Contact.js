@@ -29,7 +29,7 @@ export default class Contact extends React.Component {
 
       console.log(scrollPercentage);
       
-      let scrollOffset = scrollPercentage - .50;
+      let scrollOffset = scrollPercentage - .70;
 
       // Length to offset the dashes
       let drawLength = (pathLength * scrollOffset) * 3 ;
@@ -54,7 +54,7 @@ export default class Contact extends React.Component {
           <div className={styles.Contact__animation}>
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100.6 107.6" id="-svg" className={styles.Contact__svg} >
                 <path vectorEffect="non-scaling-stroke" id='contact-path' className={styles.Contact__path} fill="none" strokeWidth="3" stroke="#000" 
-                  d="M0,2h75V55h26" />
+                  d="M0,2h75V40h30" />
               </svg>
           </div>
           <h2>work with us</h2>
