@@ -2,13 +2,15 @@
 @import url("https://use.typekit.net/jhd6tvc.css");
 
 .Contact {
+  width: 100vw;
+  position: relative;
+  flex: 1 15vw;
+  margin-top: 100px;
+  border: 1px solid black;
   // Values changing w/ animation?
   margin-top: 100px;
   padding-top: 140px;
-  position: relative;
-  flex: 1 60vh;
-  margin-top: 100px;
-  // border: 1px solid black;
+
 
   &__animation {
     width: 100%;
@@ -17,9 +19,6 @@
     max-height: 100%;
   }
   
-  h1 {
-    margin-left: 80px;
-  }
 
   h2 {
     font-size: 2em;

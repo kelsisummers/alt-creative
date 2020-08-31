@@ -5,11 +5,28 @@ import styles from './Services.module.scss';
 
 export default class Services extends React.Component {
   componentDidMount() {
+
     // Get a reference to the <path>
     const servicesPath = document.querySelector('#services-path');
 
     // let heightOutput = document.documentElement.clientHeight;
     let widthOutput = document.documentElement.clientWidth;
+    console.log(widthOutput)
+
+    if (widthOutput <= 1440) {
+      document.getElementById('services-path').setAttribute('d', 'M0,12h14V25h90');
+    }
+    
+    if (widthOutput <= 1024) {
+      document.getElementById('services-path').setAttribute('d', 'M0,8h14V25h90');
+    }
+
+    if (widthOutput <= 900) {
+      document.getElementById('services-path').setAttribute('d', 'M0,8h14V28h90');
+    }
+    if (widthOutput <= 800) {
+      document.getElementById('services-path').setAttribute('d', 'M0,4h17V38h90');
+    }
 
 
     // Get length of path... ~577px in this case
@@ -70,7 +87,7 @@ export default class Services extends React.Component {
       <div className={styles.Services__animation}>
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 100.6 107.6" id="services-svg" className={styles.Services__svg} >
                 <path vectorEffect="non-scaling-stroke" id='services-path' className={styles.Services__path} fill="none" strokeWidth="3" stroke="#000" 
-                d="M0,2h17V15h90" />
+                d="M0,16h14V25h90" />
             </svg>
       </div>
     </div>

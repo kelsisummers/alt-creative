@@ -1,10 +1,12 @@
+@import '../../App.scss';
+
 .Hero {
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  flex: 1 30vw;
   position: relative;
-  flex: 1 1 30vw;
-  // border: 1px solid black;
+  // border: 1px black solid;
 
   &__animation {
     width: 100%;
@@ -24,27 +26,41 @@
     background: #fafafa;
     padding: 0 1.25rem;
     z-index: -1;
+
     h1 {
       font-size: 4rem;
       font-weight: 300;
     }
-    
+
     h2 {
       font-size: 1.75rem;
       font-weight: 400;
-      padding: 0 0 1.25rem 3.75rem;
+      padding: 0 0 1.25rem 1.5rem;
     }
-    @media screen and (max-width: 850px) and (min-width: 320px){
+    
+    @include tablet-landscape {
       h1 {
-        font-size: 2rem;
-        font-weight: 400;
+        font-size: 2.75rem;
       }
       h2 {
-        font-size: 1.25rem;
-        font-weight: 300;
+        font-size: 1.5rem;
         padding: 0 0 1rem 1.5rem;
       }
     }
-  }
 
+    @include tablet-portrait {
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-weight: 300;
+      }
+    }
+  }
+  
+  @include mobile {
+    display: none;
+  }
 }
+
+

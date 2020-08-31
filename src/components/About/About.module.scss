@@ -1,19 +1,17 @@
 .About {
-    display: flex;
-    flex-flow: column wrap;
-    position: relative;
-    flex: 1 60vh;
-    margin-top: 100px;
-    // border: 1px solid black;
+  width: 100vw;
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 25vw;
+  position: relative;
+  // margin-top: 100px;
+  border: 1px solid black;
   
-    &__animation {
-      width: 100%;
-      position: absolute;
-    }
-
-  &__header {
-    margin-left: 80px;
+  &__animation {
+    width: 100%;
+    position: absolute;
   }
+
 
   &__content {
     display: flex;

@@ -4,29 +4,67 @@
 @import url("https://use.typekit.net/jhd6tvc.css");
 
 
+// Normalize SCSS
+@import '../node_modules/normalize-scss/sass/normalize/import-now';
+
+// Screen Size Variables
+$xsmall: 320px;
+$small: 768px;
+$medium: 1024px;
+$large: 1440px;
+$xlarge: 1920px; 
+
+// Breakpoints
+@mixin mobile {
+  @media (max-width: $small) { @content; }
+}
+
+@mixin tablet-portrait {
+  @media (max-width: $medium) { @content; }
+}
+
+@mixin tablet-landscape {
+  @media (max-width: $large) { @content; }
+}
+
+@mixin xlargeDesktop {
+  @media (max-width: $xlarge) { @content; }
+}
+
 html {
   background-color: #fafafa;
   font-size: 16px;
+  overflow-x: hidden;
+  @include tablet-portrait {
+    font-size: 14px;
+  } 
 }
 
 body {
   overflow-x: hidden; 
   font-family: 'proxima-nova', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
 }
 
 h1 {
   font-size: 2.3rem;
   font-weight: 300;
   margin: 0;
+  margin-left: 80px;
+  @include tablet-portrait {
+    font-size: 2rem;
+    margin-left: 50px;
+  }
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
-}
-
-.Hero {
-  flex: 1;
+  @include tablet-portrait {
+    font-size: 1.28rem;
+  }
 }
 
