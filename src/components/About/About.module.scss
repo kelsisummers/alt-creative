@@ -1,40 +1,74 @@
+@import '../../App.scss';
+
 .About {
   width: 100vw;
   display: flex;
   flex-flow: column wrap;
-  flex: 1 25vw;
+  flex: 1 40vw;
   position: relative;
-  // margin-top: 100px;
-  border: 1px solid black;
+  margin-top: 100px;
+  // border: 1px solid black;
   
   &__animation {
     width: 100%;
     position: absolute;
+    overflow: hidden;
+    height: 100%;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      display: none;
+    }
   }
 
 
   &__content {
     display: flex;
     flex-flow: row wrap;
-      margin-left: 8.5%;
-      margin-top: 80px;
+    margin-top: 3%;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      flex-direction: column;
+    }
 
     img {
-      width: 50%;
+      width: 40%;
       max-width: 983px;
       min-width: 300px;
       align-self: start;
-      // Value changing w/ animation?      
-      margin-right: 47px;
+      margin-top: 5%;
+      margin-left: 11.5%;
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+      }
     }
     
     p {
       flex: 1;
       align-self: flex-end;
-      margin-bottom: 40px;
-      margin-right: 80px;
+      max-width: 30%;
       font-weight: 300;
-      font-size: 1.25rem;
+
+      margin-left: 7%;
+      @include tablet-landscape {
+        max-width: 35%;
+        font-size: 1.25rem;
+      }
+      @media screen and (min-width: 1024px) {
+        font-size: 1rem;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1023px) {
+        font-size: .86rem;
+        max-width: 38%;
+      }
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1rem;
+        max-width: 570px;
+        margin-top: 7%;
+        min-width: 280px;
+        width: 90%;
+      }
     }
   }
 }
