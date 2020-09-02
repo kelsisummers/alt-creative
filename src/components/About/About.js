@@ -3,49 +3,10 @@ import React from 'react';
 import styles from './About.module.scss';
 
 export default class About extends React.Component {
-  componentDidMount() {
-    // Get a reference to the <path>
-    const aboutPath = document.querySelector('#about-path');
-
-    // let heightOutput = document.documentElement.clientHeight;
-    let widthOutput = document.documentElement.clientWidth;
-
-
-    // Get length of path... ~577px in this case
-    let pathLength = aboutPath.getTotalLength() + (widthOutput + 25000);
-
-    // Make very long dashes (the length of the path itself)
-    aboutPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-    // Offset the dashes so the it appears hidden entirely
-    aboutPath.style.strokeDashoffset = pathLength;
-
-    aboutPath.getBoundingClientRect();
-
-    // When the page scrolls...
-    window.addEventListener("scroll", function(e) {
-    
-      // What % down is it? 
-      let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-
-      // console.log(scrollPercentage);
-      
-      let scrollOffset = scrollPercentage - .30;
-
-      // Length to offset the dashes
-      let drawLength = (pathLength * scrollOffset) ;
-      
-      // Draw in reverse
-      aboutPath.style.strokeDashoffset = pathLength - drawLength;
-        
-      // When complete, remove the dash array, otherwise shape isn't quite sharp
-      if (scrollPercentage >= .99) {
-        aboutPath.style.strokeDasharray = 'none';
-        
-      } else {
-        aboutPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-      }
-      
-    });
+  // Calls createPath Animation Function
+  componentDidMount(props) {
+    const { createPath } = this.props;
+    createPath('about', 25000, .3, 1);
   }
   render(){
     return (
@@ -69,5 +30,3 @@ export default class About extends React.Component {
 // About.propTypes = {};
 
 // About.defaultProps = {};
-
-// export default About;

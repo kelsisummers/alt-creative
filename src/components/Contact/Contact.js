@@ -3,50 +3,63 @@ import React from 'react';
 import styles from './Contact.module.scss';
 
 export default class Contact extends React.Component {
-  componentDidMount() {
-    // Get a reference to the <path>
-    const contactPath = document.querySelector('#contact-path');
+  // Calls createPath Animation Function
+  componentDidMount(props) {
+    const { createPath } = this.props;
 
-    // let heightOutput = document.documentElement.clientHeight;
-    let widthOutput = document.documentElement.clientWidth;
+    // Initialize Variable for Resized SVG Path
+    let updatedPath;
 
+    // Get Component Width
+    let componentWidth = document.documentElement.clientWidth;
+    // console.log(componentWidth)
 
-    // Get length of path... ~577px in this case
-    let pathLength = contactPath.getTotalLength() + (widthOutput + 500);
+    // Responsive SVG Paths
+    switch (true) {
+      case (componentWidth <= 1440 && componentWidth > 1300):
+        updatedPath = 'M0,2h75V45h30';
+        break;
+      case (componentWidth <= 1300 && componentWidth > 900):
+        updatedPath = 'M0,2h75V50h30';
+        break;
+      case (componentWidth < 900):
+        updatedPath = 'M0,2h75V75h30';
+        break;
+      default :
+        updatedPath = ("M0,2h75V40h30")
+    }
+    // console.log(updatedPath);
+    document.getElementById('contact-path').setAttribute('d', updatedPath);
 
-    // Make very long dashes (the length of the path itself)
-    contactPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-    // Offset the dashes so the it appears hidden entirely
-    contactPath.style.strokeDashoffset = pathLength;
+    // When Window is Resized...
+    window.addEventListener('resize', function(e) {
+      // Update Component Width
+      componentWidth = document.documentElement.clientWidth;
+      // console.log(`updated width: ${componentWidth}`);
 
-    contactPath.getBoundingClientRect()
-
-    // When the page scrolls...
-    window.addEventListener("scroll", function(e) {
-    
-      // What % down is it? 
-      let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-
-      console.log(scrollPercentage);
-      
-      let scrollOffset = scrollPercentage - .70;
-
-      // Length to offset the dashes
-      let drawLength = (pathLength * scrollOffset) * 3 ;
-      
-      // Draw in reverse
-      contactPath.style.strokeDashoffset = pathLength - drawLength;
-        
-      // When complete, remove the dash array, otherwise shape isn't quite sharp
-      if (scrollPercentage >= .99) {
-        contactPath.style.strokeDasharray = 'none';
-        
-      } else {
-        contactPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+      // Update Path Depending on Component Width
+      switch (true) {
+        case (componentWidth <= 1440 && componentWidth > 1300):
+          updatedPath = 'M0,2h75V45h30';
+          break;
+        case (componentWidth <= 1300 && componentWidth > 900):
+          updatedPath = 'M0,2h75V60h30';
+          break;
+        case (componentWidth < 900):
+          updatedPath = 'M0,2h75V80h30';
+          break;
+        default :
+          updatedPath = ("M0,2h75V40h30")
       }
-      
-    });
+      // console.log(updatedPath);
+      document.getElementById('contact-path').setAttribute('d', updatedPath);
+    })
+
+    // Calls Animation Function
+    createPath('contact', 500, .7, 3);
   }
+
+  
   render() {
     return (
       <div className={styles.Contact} id="contact">

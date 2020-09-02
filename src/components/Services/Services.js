@@ -4,64 +4,66 @@ import styles from './Services.module.scss';
 
 
 export default class Services extends React.Component {
-  componentDidMount() {
+  componentDidMount(props) {
+    // Destructuring Props
+    const { createPath } = this.props;
 
-    // Get a reference to the <path>
-    const servicesPath = document.querySelector('#services-path');
+    // Initialize Variable for Resized SVG Path
+    let updatedPath;
 
-    // let heightOutput = document.documentElement.clientHeight;
-    let widthOutput = document.documentElement.clientWidth;
-    console.log(widthOutput)
+    // Get Component Width
+    let componentWidth = document.documentElement.clientWidth;
+    // console.log(componentWidth)
 
-    if (widthOutput <= 1440) {
-      document.getElementById('services-path').setAttribute('d', 'M0,12h14V25h90');
+    // Responsive SVG Paths
+    switch (true) {
+      case (componentWidth <= 1440 && componentWidth > 1024):
+        updatedPath = 'M0,12h14V25h90';
+        break;
+      case (componentWidth <= 1024 && componentWidth > 900):
+        updatedPath = 'M0,8h14V25h90';
+        break;
+      case (componentWidth <= 900 && componentWidth > 800):
+        updatedPath = 'M0,8h14V28h90';
+        break;
+      case (componentWidth <= 800):
+        updatedPath = 'M0,4h17V38h90';
+        break;
+      default :
+        updatedPath = ("M0,16h14V25h90")
     }
-    
-    if (widthOutput <= 1024) {
-      document.getElementById('services-path').setAttribute('d', 'M0,8h14V25h90');
-    }
+    // console.log(updatedPath);
+    document.getElementById('services-path').setAttribute('d', updatedPath);
 
-    if (widthOutput <= 900) {
-      document.getElementById('services-path').setAttribute('d', 'M0,8h14V28h90');
-    }
-    if (widthOutput <= 800) {
-      document.getElementById('services-path').setAttribute('d', 'M0,4h17V38h90');
-    }
+    // When Window is Resized...
+    window.addEventListener('resize', function(e) {
+      // Update Component Width
+      componentWidth = document.documentElement.clientWidth;
+      // console.log(`updated width: ${componentWidth}`);
 
-
-    // Get length of path... ~577px in this case
-    let pathLength = servicesPath.getTotalLength() + (widthOutput + 5000);
-
-    // Make very long dashes (the length of the path itself)
-    servicesPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-    // Offset the dashes so the it appears hidden entirely
-    servicesPath.style.strokeDashoffset = pathLength;
-
-    servicesPath.getBoundingClientRect()
-
-    // When the page scrolls...
-    window.addEventListener("scroll", function(e) {
-    
-      // What % down is it? 
-      let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-      
-      let scrollOffset = scrollPercentage - .11;
-
-      // Length to offset the dashes
-      let drawLength = (pathLength * scrollOffset) * 2.7;
-      
-      // Draw in reverse
-      servicesPath.style.strokeDashoffset = pathLength - drawLength;
-        
-      // When complete, remove the dash array, otherwise shape isn't quite sharp
-      if (scrollPercentage >= .99) {
-        servicesPath.style.strokeDasharray = 'none';
-        
-      } else {
-        servicesPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+      // Update Path Depending on Component Width
+      switch (true) {
+        case (componentWidth <= 1440 && componentWidth > 1024):
+          updatedPath = 'M0,12h14V25h90';
+          break;
+        case (componentWidth <= 1024 && componentWidth > 900):
+          updatedPath = 'M0,8h14V25h90';
+          break;
+        case (componentWidth <= 900 && componentWidth > 800):
+          updatedPath = 'M0,8h14V28h90';
+          break;
+        case (componentWidth <= 800):
+          updatedPath = 'M0,4h17V38h90';
+          break;
+        default :
+          updatedPath = ("M0,16h14V25h90")
       }
-      
-    });
+      // console.log(updatedPath);
+      document.getElementById('services-path').setAttribute('d', updatedPath);
+    })
+    
+    // Calls createPath Animation Function
+    createPath('services', 5000, .11, 2.7);
   }
   render() {
     return (
@@ -94,86 +96,7 @@ export default class Services extends React.Component {
     );
   };
 };
+
 // Services.propTypes = {};
 
 // Services.defaultProps = {};
-
-// export default Services;
-
-
-// Line animation starter code
-
-// CSS
-// const animation = {
-//   position: "fixed",
-//   top: "250px",
-//   left: "0",
-//   width: "100%",
-//   height: "100px",
-//   margin: "-75px 0 0 -75px",
-//   zIndex: "-1"
-// }
-
-// Javascript
-//   componentDidMount() {
-//     // Get a reference to the <path>
-//     let path = document.querySelector('#star-path');
-
-//     // Get length of path... ~577px in this case
-//     let pathLength = path.getTotalLength();
-
-//     // Make very long dashes (the length of the path itself)
-//     path.style.strokeDasharray = pathLength + ' ' + pathLength;
-//     // Offset the dashes so the it appears hidden entirely
-//     path.style.strokeDashoffset = pathLength;
-
-//     // Jake Archibald says so
-//     // https://jakearchibald.com/2013/animated-line-drawing-svg/
-//     path.getBoundingClientRect()
-
-//     // When the page scrolls...
-//     window.addEventListener("scroll", function(e) {
-    
-//       // What % down is it? 
-//       // https://stackoverflow.com/questions/2387136/cross-browser-method-to-determine-vertical-scroll-percentage-in-javascript/2387222#2387222
-//       // Had to try three or four differnet methods here. Kind of a cross-browser nightmare.
-//       let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-        
-//       // Length to offset the dashes
-//       let drawLength = pathLength * scrollPercentage;
-      
-//       // Draw in reverse
-//       path.style.strokeDashoffset = pathLength - drawLength;
-        
-//       // When complete, remove the dash array, otherwise shape isn't quite sharp
-//       // Accounts for fuzzy math
-//       if (scrollPercentage >= 0.99) {
-//         path.style.strokeDasharray = "none";
-        
-//       } else {
-//         path.style.strokeDasharray = pathLength + ' ' + pathLength;
-//       }
-      
-//     });
-//   }
-
-// Animation Resize Function
-// function resize() {
-//   widthOutput = document.documentElement.clientWidth;
-//   let pathLength = servicesPath.getTotalLength() + (widthOutput + 100);
-
-//   // Make very long dashes (the length of the path itself)
-//   servicesPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-//   // Offset the dashes so the it appears hidden entirely
-//   servicesPath.style.strokeDashoffset = pathLength;
-
-//   let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-//   let scrollOffset = scrollPercentage - .11;
-
-//   // Length to offset the dashes
-//   let drawLength = (pathLength * scrollOffset) * 2.7;
-  
-//   // Draw in reverse
-//   servicesPath.style.strokeDashoffset = pathLength - drawLength;
-// }
-// window.onresize = resize;

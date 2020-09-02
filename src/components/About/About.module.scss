@@ -6,8 +6,12 @@
   flex-flow: column wrap;
   flex: 1 40vw;
   position: relative;
-  margin-top: 100px;
+  padding-top: 250px;
   // border: 1px solid black;
+  // @media screen and (min-width: 320px) and (max-width: 767px) {
+  //     display: none;
+  // }
+
   
   &__animation {
     width: 100%;

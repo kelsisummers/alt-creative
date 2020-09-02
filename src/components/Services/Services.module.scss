@@ -11,6 +11,9 @@
   @include mobile {
     margin-top: 40px;
   }
+  // @media screen and (min-width: 320px) and (max-width: 767px) {
+  //   display: none;
+  // }
 
   &__container {
     width: 100%;

@@ -8,7 +8,10 @@
   flex: 1 15vw;
   // border: 1px solid black;
   // Values changing w/ animation?
-  padding-top: 100px;
+  padding-top: 250px;
+  // @media screen and (min-width: 320px) and (max-width: 767px) {
+  //   display: none;
+  // }
 
 
   &__animation {
