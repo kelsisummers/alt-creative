@@ -16,32 +16,7 @@ export default class Services extends React.Component {
     // console.log(componentWidth)
 
     // Responsive SVG Paths
-    switch (true) {
-      case (componentWidth <= 1440 && componentWidth > 1024):
-        updatedPath = 'M0,12h14V25h90';
-        break;
-      case (componentWidth <= 1024 && componentWidth > 900):
-        updatedPath = 'M0,8h14V25h90';
-        break;
-      case (componentWidth <= 900 && componentWidth > 800):
-        updatedPath = 'M0,8h14V28h90';
-        break;
-      case (componentWidth <= 800):
-        updatedPath = 'M0,4h17V38h90';
-        break;
-      default :
-        updatedPath = ("M0,16h14V25h90")
-    }
-    // console.log(updatedPath);
-    document.getElementById('services-path').setAttribute('d', updatedPath);
-
-    // When Window is Resized...
-    window.addEventListener('resize', function(e) {
-      // Update Component Width
-      componentWidth = document.documentElement.clientWidth;
-      // console.log(`updated width: ${componentWidth}`);
-
-      // Update Path Depending on Component Width
+    const svgPath = (componentWidth) => {
       switch (true) {
         case (componentWidth <= 1440 && componentWidth > 1024):
           updatedPath = 'M0,12h14V25h90';
@@ -60,6 +35,19 @@ export default class Services extends React.Component {
       }
       // console.log(updatedPath);
       document.getElementById('services-path').setAttribute('d', updatedPath);
+    }
+    
+    // Set SVG Path On Page Load
+    window.onload = svgPath(componentWidth);
+
+    // When Window is Resized...
+    window.addEventListener('resize', function(e) {
+      // Update Component Width
+      componentWidth = document.documentElement.clientWidth;
+      // console.log(`updated width: ${componentWidth}`);
+
+      // Update Path Depending on Component Width
+      svgPath(componentWidth);
     })
     
     // Calls createPath Animation Function

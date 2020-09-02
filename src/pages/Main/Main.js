@@ -12,22 +12,21 @@ export default class Main extends React.Component {
     this.state = this.createPath.bind(this);
   }
 
-  createPath(component, length, offset, speed) {
+  createPath(component, extraLength, offset, speed) {
     // Get a reference to the <path>
-    const path = document.querySelector('#' + component + '-path');
+    const path = document.querySelector(`#${component}-path`);
     // console.log(path);
 
-    let heightOutput = document.documentElement.clientHeight;
     let widthOutput = document.documentElement.clientWidth;
-    // console.log(`initial value: ${heightOutput} & ${widthOutput}`);
+    // console.log(`initial value: ${widthOutput}`);
 
 
     // Get length of path... ~577px in this case
-    let pathLength = path.getTotalLength() + (widthOutput + length);
+    let pathLength = path.getTotalLength() + (widthOutput + extraLength);
     // console.log(`initial path length: ${pathLength}`);
     
     // Make very long dashes (the length of the path itself)
-    path.style.strokeDasharray = pathLength + ' ' + pathLength;
+    path.style.strokeDasharray = `${pathLength} ${pathLength}`;
     // Offset the dashes so the it appears hidden entirely
     path.style.strokeDashoffset = pathLength;
     
@@ -35,8 +34,8 @@ export default class Main extends React.Component {
 
     window.addEventListener('resize', function(e) {
       widthOutput = document.documentElement.clientWidth;
-      pathLength = path.getTotalLength() + (widthOutput + length);
-      path.style.strokeDasharray = pathLength + ' ' + pathLength;
+      pathLength = path.getTotalLength() + (widthOutput + extraLength);
+      path.style.strokeDasharray = `${pathLength} ${pathLength}`;
       // Offset the dashes so the it appears hidden entirely
       path.style.strokeDashoffset = pathLength;
       path.getBoundingClientRect();
@@ -53,6 +52,7 @@ export default class Main extends React.Component {
     let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
     // console.log(scrollPercentage);
     
+    // Offset scrollPercentage Based on Component Location
     let scrollOffset = scrollPercentage - offset;
         
     // Length to offset the dashes
@@ -66,7 +66,7 @@ export default class Main extends React.Component {
     if (scrollPercentage >= .99) {
       path.style.strokeDasharray = 'none';  
     } else {
-      path.style.strokeDasharray = pathLength + ' ' + pathLength;
+      path.style.strokeDasharray = `${pathLength} ${pathLength}`;
     };
   });
 }

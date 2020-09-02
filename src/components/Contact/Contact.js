@@ -3,8 +3,8 @@ import React from 'react';
 import styles from './Contact.module.scss';
 
 export default class Contact extends React.Component {
-  // Calls createPath Animation Function
   componentDidMount(props) {
+    // Destructuring Props
     const { createPath } = this.props;
 
     // Initialize Variable for Resized SVG Path
@@ -15,21 +15,26 @@ export default class Contact extends React.Component {
     // console.log(componentWidth)
 
     // Responsive SVG Paths
-    switch (true) {
-      case (componentWidth <= 1440 && componentWidth > 1300):
-        updatedPath = 'M0,2h75V45h30';
-        break;
-      case (componentWidth <= 1300 && componentWidth > 900):
-        updatedPath = 'M0,2h75V50h30';
-        break;
-      case (componentWidth < 900):
-        updatedPath = 'M0,2h75V75h30';
-        break;
-      default :
-        updatedPath = ("M0,2h75V40h30")
+    const svgPath = (componentWidth) => {
+      switch (true) {
+        case (componentWidth <= 1440 && componentWidth > 1300):
+          updatedPath = 'M0,2h75V45h30';
+          break;
+        case (componentWidth <= 1300 && componentWidth > 900):
+          updatedPath = 'M0,2h75V50h30';
+          break;
+        case (componentWidth < 900):
+          updatedPath = 'M0,2h75V75h30';
+          break;
+        default :
+          updatedPath = ("M0,2h75V40h30")
+      }
+      // console.log(updatedPath);
+      document.getElementById('contact-path').setAttribute('d', updatedPath);
     }
-    // console.log(updatedPath);
-    document.getElementById('contact-path').setAttribute('d', updatedPath);
+
+    // Set SVG Path On Page Load
+    window.onload = svgPath(componentWidth);
 
     // When Window is Resized...
     window.addEventListener('resize', function(e) {
@@ -38,24 +43,10 @@ export default class Contact extends React.Component {
       // console.log(`updated width: ${componentWidth}`);
 
       // Update Path Depending on Component Width
-      switch (true) {
-        case (componentWidth <= 1440 && componentWidth > 1300):
-          updatedPath = 'M0,2h75V45h30';
-          break;
-        case (componentWidth <= 1300 && componentWidth > 900):
-          updatedPath = 'M0,2h75V60h30';
-          break;
-        case (componentWidth < 900):
-          updatedPath = 'M0,2h75V80h30';
-          break;
-        default :
-          updatedPath = ("M0,2h75V40h30")
-      }
-      // console.log(updatedPath);
-      document.getElementById('contact-path').setAttribute('d', updatedPath);
-    })
+      svgPath(componentWidth);
+    });
 
-    // Calls Animation Function
+    // Calls createPath Animation Function
     createPath('contact', 500, .7, 3);
   }
 
