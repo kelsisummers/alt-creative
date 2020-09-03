@@ -9,7 +9,7 @@ import Contact from '../../components/Contact';
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.createPath.bind(this);
+    this.createPath = this.createPath.bind(this);
   }
 
   createPath(component, extraLength, offset, speed) {

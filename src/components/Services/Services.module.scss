@@ -1,5 +1,6 @@
 @import '../../App.scss';
 
+
 .Services {
   width: 100vw;
   display: flex;
@@ -10,10 +11,8 @@
   justify-content: flex-end;
   @include mobile {
     margin-top: 40px;
+    margin-bottom: 40px;
   }
-  // @media screen and (min-width: 320px) and (max-width: 767px) {
-  //   display: none;
-  // }
 
   &__container {
     width: 100%;
