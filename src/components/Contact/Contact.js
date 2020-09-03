@@ -1,8 +1,9 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Contact.module.scss';
 
 export default class Contact extends React.Component {
+  // When Component Mounts
   componentDidMount(props) {
     // Destructuring Props
     const { createPath } = this.props;
@@ -29,8 +30,9 @@ export default class Contact extends React.Component {
         default :
           updatedPath = ("M0,2h75V40h30")
       }
-      // console.log(updatedPath);
-      document.getElementById('contact-path').setAttribute('d', updatedPath);
+      if (componentWidth > 768) {
+        document.getElementById('contact-path').setAttribute('d', updatedPath);
+      }
     }
 
     // Set SVG Path On Page Load
@@ -49,8 +51,6 @@ export default class Contact extends React.Component {
     // Calls createPath Animation Function
     createPath('contact', 500, .7, 3);
   }
-
-  
   render() {
     return (
       <div className={styles.Contact} id="contact">
@@ -78,6 +78,8 @@ export default class Contact extends React.Component {
   }
 }
 
-// Contact.propTypes = {};
+Contact.propTypes = {
+  createPath: PropTypes.func
+};
 
 // Contact.defaultProps = {};

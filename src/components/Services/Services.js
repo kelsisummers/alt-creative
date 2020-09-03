@@ -1,11 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Services.module.scss';
 
 
 export default class Services extends React.Component {
+  // When Component Mounts
   componentDidMount(props) {
-    // Destructuring Props
+    // Destructure Props
     const { createPath } = this.props;
 
     // Initialize Variable for Resized SVG Path
@@ -33,8 +34,9 @@ export default class Services extends React.Component {
         default :
           updatedPath = ("M0,16h14V25h90")
       }
-      // console.log(updatedPath);
-      document.getElementById('services-path').setAttribute('d', updatedPath);
+      if (componentWidth > 768) {
+        document.getElementById('services-path').setAttribute('d', updatedPath);
+      }
     }
     
     // Set SVG Path On Page Load
@@ -85,6 +87,8 @@ export default class Services extends React.Component {
   };
 };
 
-// Services.propTypes = {};
+Services.propTypes = {
+  createPath: PropTypes.func,
+};
 
 // Services.defaultProps = {};

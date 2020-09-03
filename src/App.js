@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.scss';
 import Main from './pages/Main';
 import Footer from "./components/Footer";
@@ -9,29 +8,45 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: false
+      isMobile: false,
+      isActive: false,
+      activeTab: 'services'
     };
-    // this.isMobile = this.isMobile.bind(this);
+    this.checkMobile = this.checkMobile.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  isMobile() {
+  // Checks ScreenWidth to Determine if User is on Mobile Device
+  checkMobile() {
     let width = document.documentElement.clientWidth;
-    console.log(width);
-
-    console.log(width)
     if (width <= 768){
-      console.log('im mobile')
-      this.setState({mobile: true});
-      console.log(this.state.mobile);
-    } else {
-      console.log('im not')
-      this.setState({mobile: false});
-      console.log(this.state.mobile);
+      this.setState({isMobile: true});
+      return true
+    } 
+    else {
+      this.setState({isMobile: false});
+      return false
     }
   }
 
-  componentDidMount(){
-    this.isMobile();
+  // Saves the Active Tab to State
+  handleClick(e) {
+    e.preventDefault();
+    const target = e.target.innerText.toLowerCase();
+    switch(true) {
+      case (target === 'services'):
+        this.setState({activeTab: 'services'})
+        break;
+      case (target === 'about'):
+        this.setState({activeTab: 'about'})
+        break;
+      case (target === 'contact'):
+        this.setState({activeTab: 'contact'})
+        break;
+      //Default Set to Services
+      default :
+        this.setState({activeTab: 'services'})
+    }
   }
 
   
@@ -39,12 +54,10 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header"></header>
-        <Nav />
-        <Main />
+        <Nav activeTab={this.state.activeTab} handleClick={this.handleClick} checkMobile={this.checkMobile} isMobile={this.state.isMobile}/>
+        <Main activeTab={this.state.activeTab} isMobile={this.state.isMobile}/>
         <Footer />
       </div>
     );
   }
 }
-
-// export default App;

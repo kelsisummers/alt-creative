@@ -1,11 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Hero.module.scss';
 
 
 export default class Hero extends React.Component {
-  // Calls createPath Animation Function
+  // When Component Mounts
   componentDidMount(props) {
+    // Calls createPath Animation Function from Props
     const { createPath } = this.props;
     createPath('hero', 5000, 0, 5);
   }
@@ -29,6 +30,8 @@ export default class Hero extends React.Component {
   }
 }
 
-// Hero.propTypes = {};
+Hero.propTypes = {
+  createPath: PropTypes.func,
+};
 
 // Hero.defaultProps = {};

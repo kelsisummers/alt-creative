@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Main.module.scss';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
@@ -12,6 +12,7 @@ export default class Main extends React.Component {
     this.createPath = this.createPath.bind(this);
   }
 
+  // Function to Create SVG Animation
   createPath(component, extraLength, offset, speed) {
     // Get a reference to the <path>
     const path = document.querySelector(`#${component}-path`);
@@ -32,6 +33,7 @@ export default class Main extends React.Component {
     
     path.getBoundingClientRect();
 
+    // Determines ScreenWidth When Window is Resized
     window.addEventListener('resize', function(e) {
       widthOutput = document.documentElement.clientWidth;
       pathLength = path.getTotalLength() + (widthOutput + extraLength);
@@ -72,17 +74,23 @@ export default class Main extends React.Component {
 }
 
   render() {
+    // Destructuring Props
+    const { isMobile, activeTab } = this.props;
     return (
       <div className={styles.Main}>
         <Hero createPath={this.createPath} />
-        <Services createPath={this.createPath} />
-        <About createPath={this.createPath} />
-        <Contact createPath={this.createPath}/>
+        {/* Conditionally Render Components If On Mobile Device */}
+        {(isMobile && activeTab === 'services') ? <Services createPath={this.createPath} /> : (!isMobile ? <Services createPath={this.createPath} /> : null)}
+        {(isMobile && activeTab === 'about') ? <About createPath={this.createPath} /> : (!isMobile ? <About createPath={this.createPath} /> : null)}
+        {(isMobile && activeTab === 'contact') ? <Contact createPath={this.createPath} /> : (!isMobile ? <Contact createPath={this.createPath} /> : null)}
       </div>
     )
   }
 }
 
-// Main.propTypes = {};
+Main.propTypes = {
+  isMobile: PropTypes.bool,
+  activeTab: PropTypes.string
+};
 
 // Main.defaultProps = {};

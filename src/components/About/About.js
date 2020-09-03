@@ -1,10 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './About.module.scss';
 
 export default class About extends React.Component {
-  // Calls createPath Animation Function
+  // When Component Mounts
   componentDidMount(props) {
+    // Call createPath Animation Function
     const { createPath } = this.props;
     createPath('about', 25000, .3, 1);
   }
@@ -27,6 +28,8 @@ export default class About extends React.Component {
   }
 };
 
-// About.propTypes = {};
+About.propTypes = {
+  createPath: PropTypes.func,
+};
 
 // About.defaultProps = {};
