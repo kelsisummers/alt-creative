@@ -38,7 +38,7 @@ export default class Contact extends React.Component {
     // Set SVG Path On Page Load
     window.onload = svgPath(componentWidth);
 
-    // When Window is Resized...
+    // // When Window is Resized...
     // window.addEventListener('resize', function(e) {
     //   // Update Component Width
     //   componentWidth = document.documentElement.clientWidth;

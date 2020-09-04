@@ -8,15 +8,23 @@ const Nav = (props) => {
   // Destructing Props
   const { checkMobile, isMobile, handleClick, activeTab } = props;
   
-  // Calls checkMobile() Function on Page Load
-  window.addEventListener('load', function(e){
-    checkMobile();
-  });
-  
-  // Calls checkMobile() Function When Screen is Resized
-  // window.addEventListener('resize', function(e){
+  function debounce(func){
+    var timer;
+    return function(event){
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(func,1000,event);
+    };
+  }
+
+  // // Calls checkMobile() Function on Page Load
+  // window.addEventListener('load', function(e){
   //   checkMobile();
   // });
+  
+  // // Calls checkMobile() Function When Screen is Resized
+  // window.addEventListener('resize', debounce(function(e){
+  //   checkMobile();
+  // }));
 
   // Default Styles for Services Link on Mobile
   const style = {
