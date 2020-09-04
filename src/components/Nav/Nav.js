@@ -17,7 +17,7 @@ const Nav = (props) => {
       setTimeout(function() {
         throttled = false;
         checkMobile();
-      }, 1000);
+      }, 250);
     } 
   });
 
@@ -29,7 +29,7 @@ const Nav = (props) => {
       setTimeout(function() {
         throttled = false;
         checkMobile();
-      }, 1000);
+      }, 250);
     } 
   });
 

@@ -8,19 +8,20 @@ export default class Contact extends React.Component {
     // Destructuring Props
     const { createPath } = this.props;
     // Calls createPath Animation Function
-    createPath('contact', 500, .7, 3);
+    createPath('contact', 1000, .7, 3);
 
     let throttled;
     // Resizes SVG Animation + Throttle
-    window.addEventListener('resize', function(e){
-      if (!throttled) {
-        throttled = true;
-        createPath('contact', 500, .7, 3);
-        setTimeout(function() {
-          throttled = false;
-        }, 150);
-      } 
-    });
+    window.addEventListener('resize', createPath('contact', 500, .7, 3));
+    // window.addEventListener('resize', function(e){
+    //   if (!throttled) {
+    //     throttled = true;
+    //     createPath('contact', 500, .7, 3);
+    //     setTimeout(function() {
+    //       throttled = false;
+    //     }, 100);
+    //   } 
+    // });
   }
   render() {
     return (
@@ -29,7 +30,7 @@ export default class Contact extends React.Component {
           <div className={styles.Contact__animation}>
               <svg xmlns="http://www.w3.org/2000/svg" height='100%' width="100%" viewBox="0 0 100.6 107.6" preserveAspectRatio="none" id="contact-svg" className={styles.Contact__svg} >
                 <path vectorEffect="non-scaling-stroke" id='contact-path' className={styles.Contact__path} fill="none" strokeWidth="3" stroke="#000" 
-                  d="M0,2h75V89h30" />
+                  d="M0,2h75V78h30" />
               </svg>
           </div>
           <h2>work with us</h2>

@@ -20,15 +20,16 @@ export default class Services extends React.Component {
     // });
     
     // Resizes SVG Animation + Throttle
-    window.addEventListener('resize', function(e){
-      if (!throttled) {
-        throttled = true;
-        createPath('services', 5000, .11, 2.7);
-        setTimeout(function() {
-          throttled = false;
-        }, 150);
-      } 
-    });
+    window.addEventListener('resize', createPath('services', 5000, .11, 2.7));
+    // window.addEventListener('resize', function(e){
+    //   if (!throttled) {
+    //     throttled = true;
+    //     createPath('services', 5000, .11, 2.7);
+    //     setTimeout(function() {
+    //       throttled = false;
+    //     }, 100);
+    //   } 
+    // });
   }
   render() {
     return (

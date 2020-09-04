@@ -20,12 +20,13 @@ export default class App extends React.Component {
   // Checks ScreenWidth to Determine if User is on Mobile Device
   checkMobile() {
     const width = document.documentElement.clientWidth;
-    if (width <= 768){
+    
+    if (width <= 768 && !this.state.isMobile){
       this.setState({isMobile: true});
       console.log(this.state.isMobile);
       return true
     } 
-    else {
+    else if (width > 768 && this.state.isMobile) {
       this.setState({isMobile: false});
       console.log(this.state.isMobile);
       return false
@@ -54,13 +55,15 @@ export default class App extends React.Component {
 
   // Function to Create SVG Animation
   createPath(component, extraLength, offset, speed) {
-    // Get a reference to the <path>
-    const path = document.querySelector(`#${component}-path`);
   
+    // Get Width of Screen
     const widthOutput = document.documentElement.clientWidth;
     // console.log(`initial value: ${widthOutput}`);
-  
+
+    // Draw SVG Paths Only On Larger Screens
     if (widthOutput > 768) {
+      // Get a reference to the <path>
+      const path = document.querySelector(`#${component}-path`);
       // Get length of path... ~577px in this case
       const pathLength = path.getTotalLength() + (widthOutput + extraLength);
       // console.log(`initial path length: ${pathLength}`);

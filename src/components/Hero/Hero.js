@@ -12,15 +12,16 @@ export default class Hero extends React.Component {
     
     let throttled;
     // Resizes SVG Animation + Throttle
-    window.addEventListener('resize', function(e){
-      if (!throttled) {
-        throttled = true;
-        createPath('hero', 5000, 0, 5);
-        setTimeout(function() {
-          throttled = false;
-        }, 150);
-      } 
-    });
+    // window.addEventListener('resize', createPath('hero', 5000, 0, 5));
+    // window.addEventListener('resize', function(e){
+    //   if (!throttled) {
+    //     throttled = true;
+    //     createPath('hero', 5000, 0, 5);
+    //     setTimeout(function() {
+    //       throttled = false;
+    //     }, 100);
+    //   } 
+    // });
   }
   render() {
     return (
