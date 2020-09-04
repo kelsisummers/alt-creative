@@ -14,9 +14,9 @@ const Nav = (props) => {
   });
   
   // Calls checkMobile() Function When Screen is Resized
-  window.addEventListener('resize', function(e){
-    checkMobile();
-  });
+  // window.addEventListener('resize', function(e){
+  //   checkMobile();
+  // });
 
   // Default Styles for Services Link on Mobile
   const style = {

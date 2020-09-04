@@ -39,14 +39,14 @@ export default class Contact extends React.Component {
     window.onload = svgPath(componentWidth);
 
     // When Window is Resized...
-    window.addEventListener('resize', function(e) {
-      // Update Component Width
-      componentWidth = document.documentElement.clientWidth;
-      // console.log(`updated width: ${componentWidth}`);
+    // window.addEventListener('resize', function(e) {
+    //   // Update Component Width
+    //   componentWidth = document.documentElement.clientWidth;
+    //   // console.log(`updated width: ${componentWidth}`);
 
-      // Update Path Depending on Component Width
-      svgPath(componentWidth);
-    });
+    //   // Update Path Depending on Component Width
+    //   svgPath(componentWidth);
+    // });
 
     // Calls createPath Animation Function
     createPath('contact', 500, .7, 3);

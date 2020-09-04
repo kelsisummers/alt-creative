@@ -1,17 +1,14 @@
 @import '../../App.scss';
 
-
 .Services {
-  width: 100vw;
   display: flex;
   flex: 1 25vw;
   flex-flow: column wrap;
-  position: relative;
-  // border: 1px black solid;
   justify-content: flex-end;
-  @include mobile {
-    margin-top: 40px;
-    margin-bottom: 40px;
+  position: relative;
+  padding-top: 100px;
+  @include tablet {
+    padding-top: 40px;
   }
 
   &__container {
@@ -22,46 +19,42 @@
     @include mobile {
       flex-flow: column wrap;
     }
-
-    .col {
-      flex: 1 30%;
-      padding-right: 1.5rem;
-      max-width: 450px;
-      @include mobile {
-        padding-top: 1rem;
-      }
-
-      p {
-        font-weight: 300;
-        padding-bottom: 0px;
-      }
-    }
   }
 
   &__header {
-    align-self: normal;
     width: 10%;
+    align-self: normal;
   }
 
   &__copy {
+    width: 90%;
     display: flex;
     flex-flow: row wrap;
-    padding-top: 50px;
-    width: 90%;
     justify-content: space-between;
+    padding-top: 50px;
     margin-left: 25px;
     @include mobile {
       flex-flow: column wrap;
       margin-left: 5%;
       padding-top: 1rem;
     }
+
+    &_col {
+      flex: 1 30%;
+      padding-right: 1.5rem;
+      max-width: 4000px;
+      @include mobile {
+        padding-top: 1rem;
+      }
+    }
   }
 
   &__animation {
     width: 100%;
-    position: absolute;
-    top: 5%;
+    height: 100%;
     overflow: hidden;
+    position: absolute;
+    bottom: 140;
     @include mobile {
       display: none;
     }

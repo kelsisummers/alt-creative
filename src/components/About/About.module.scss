@@ -1,78 +1,68 @@
 @import '../../App.scss';
 
 .About {
-  width: 100vw;
   display: flex;
   flex-flow: column wrap;
   flex: 1 40vw;
   position: relative;
-  padding-top: 250px;
-  // border: 1px solid black;
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-      // display: none;
-      padding-top: 40px;
+  padding-top: 100px;
+  @include mobile {
+    padding-top: 40px;
   }
 
-  
   &__animation {
     width: 100%;
-    position: absolute;
-    overflow: hidden;
     height: 100%;
-    @media screen and (min-width: 320px) and (max-width: 767px) {
+    overflow: hidden;
+    position: absolute;
+    @include mobile {
       display: none;
     }
   }
-
 
   &__content {
     display: flex;
     flex-flow: row wrap;
     margin-top: 3%;
-    @media screen and (min-width: 320px) and (max-width: 767px) {
+    @include mobile {
       flex-direction: column;
     }
 
     img {
       width: 40%;
-      max-width: 983px;
+      max-width: 980px;
       min-width: 300px;
       align-self: start;
-      margin-top: 5%;
-      margin-left: 11.5%;
-      @media screen and (min-width: 320px) and (max-width: 767px) {
-        margin-left: auto;
-        margin-right: auto;
+      margin: 5% 0 0 11.5%;
+      @include mobile {
+        margin: 0 auto 0 auto;
         width: 75%;
       }
     }
     
     p {
+      width: 30%;
+      max-width: 500px;
+      margin: 0 20px 0 7%;
       flex: 1;
       align-self: flex-end;
-      max-width: 30%;
-      font-weight: 300;
-
-      margin-left: 7%;
-      @include tablet-landscape {
-        max-width: 35%;
+      @include desktop {
+        width: 35%;
         font-size: 1.25rem;
       }
-      @media screen and (min-width: 1024px) {
+      @media only screen and (min-width: $medium) {
         font-size: 1rem;
       }
-      @media screen and (min-width: 768px) and (max-width: 1023px) {
+      @media only screen and (min-width: $small) and (max-width: $medium) {
         font-size: .86rem;
-        max-width: 38%;
+        width: 38%;
       }
-      @media screen and (min-width: 320px) and (max-width: 767px) {
-        margin-left: auto;
-        margin-right: auto;
+      @include mobile {
         font-size: 1rem;
-        max-width: 570px;
-        margin-top: 7%;
-        min-width: 280px;
         width: 90%;
+        min-width: 280px;
+        max-width: 570px;
+        margin: 7% auto 0 auto;
       }
     }
   }

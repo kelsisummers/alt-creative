@@ -3,26 +3,20 @@
 @import '../../App.scss';
 
 .Contact {
-  width: 100vw;
-  position: relative;
-  flex: 1 15vw;
   display: flex;
+  flex: 1 15vw;
   flex-direction: column;
-  // border: 1px solid black;
-  // Values changing w/ animation?
+  position: relative;
   padding-top: 100px;
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    // display: none;
+  @include mobile {
     padding-top: 40px;
 }
 
-
   &__animation {
     width: 100%;
+    overflow: hidden;
     position: absolute;
     top: 17%;
-    overflow: hidden;
-    max-height: 100%;
     @include mobile {
       display: none;
     }
@@ -30,16 +24,12 @@
 
 
   h2 {
-    font-size: 2em;
-    // Values changing w/ animation?      
-    margin-left: 200px;
-    margin-top: 60px;
-    font-weight: 300;
+    font-size: 2em; 
+    font-weight: 300;   
+    margin: 60px 0 0 10%;
+
     @include mobile {
-      margin-left: 5%;
-      margin-top: 10px;
-      margin-bottom: 25px;
-      margin-right: auto;
+      margin-top: 10px auto 25px 5%;
     }
   }
 
@@ -47,8 +37,7 @@
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 0 auto;
     @include mobile {
       width: 90%;
     }
@@ -93,6 +82,6 @@
 
   ::placeholder {
     font-weight: 300;
-    font-size: .875 rem;
+    font-size: .875rem;
   }
 }

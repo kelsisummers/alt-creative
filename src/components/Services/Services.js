@@ -43,14 +43,14 @@ export default class Services extends React.Component {
     window.onload = svgPath(componentWidth);
 
     // When Window is Resized...
-    window.addEventListener('resize', function(e) {
-      // Update Component Width
-      componentWidth = document.documentElement.clientWidth;
-      // console.log(`updated width: ${componentWidth}`);
+    // window.addEventListener('resize', function(e) {
+    //   // Update Component Width
+    //   componentWidth = document.documentElement.clientWidth;
+    //   // console.log(`updated width: ${componentWidth}`);
 
-      // Update Path Depending on Component Width
-      svgPath(componentWidth);
-    })
+    //   // Update Path Depending on Component Width
+    //   svgPath(componentWidth);
+    // })
     
     // Calls createPath Animation Function
     createPath('services', 5000, .11, 2.7);
@@ -61,17 +61,17 @@ export default class Services extends React.Component {
       <div className={styles.Services__container}>
         <h1 className={styles.Services__header}>Services</h1>
         <div className={styles.Services__copy}>
-          <span className={styles.col}>
+          <span className={styles.Services__copy_col}>
             <h2>User Experience Design</h2>
-            <p>Pretending to code on this thing to see if it's worth keeping. It's awful small. But not smaller than what I have been using. And the keyboard on the macpro was kind of a pain in the ass. But that was mostly because of the stupid touchbar along the top. Real lame.</p>
+            <p>Synthesizing user data and stakeholder objectives, I design seamless, intuitive user experiences with measurable success metrics. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua. Vel pretium lectus quam id leo in vitae. </p>
           </span>
-          <span className={styles.col}>
+          <span className={styles.Services__copy_col}>
             <h2>User Interface Design</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua. Vel pretium lectus quam id leo in vitae. Cras adipiscing enim eu turpis egestas pretium. Amet consectetur adipiscing elit duis.</p>
+            <p>Utilizing color palettes, typography, iconography, and grid layout, I ensure your business’s brand identity is represented in all aspects of a product's design. Vel pretium lectus quam id leo in vitae. Cras adipiscing enim eu turpis egestas pretium.</p>
           </span>
-          <span className={styles.col}> 
+          <span className={styles.Services__copy_col}> 
             <h2>Frontend Web Development</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  aliqua. Vel pretium lectus quam id leo in vitae. Cras adipiscing enim eu turpis egestas pretium. Amet consectetur adipiscing elit duis.</p>
+            <p>Leveraging the latest frontend technologies or template solutions, I create mobile-friendly, accessible web interfaces users love.Cras adipiscing enim eu turpis egestas pretium. Amet consectetur adipiscing elit duis.</p>
           </span>
         </div>
       </div>

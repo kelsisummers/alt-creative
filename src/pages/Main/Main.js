@@ -34,16 +34,16 @@ export default class Main extends React.Component {
     path.getBoundingClientRect();
 
     // Determines ScreenWidth When Window is Resized
-    window.addEventListener('resize', function(e) {
-      widthOutput = document.documentElement.clientWidth;
-      pathLength = path.getTotalLength() + (widthOutput + extraLength);
-      path.style.strokeDasharray = `${pathLength} ${pathLength}`;
-      // Offset the dashes so the it appears hidden entirely
-      path.style.strokeDashoffset = pathLength;
-      path.getBoundingClientRect();
-      // console.log(`updated path length: ${pathLength}`);
-      return pathLength;
-    })
+    // window.addEventListener('resize', function(e) {
+    //   widthOutput = document.documentElement.clientWidth;
+    //   pathLength = path.getTotalLength() + (widthOutput + extraLength);
+    //   path.style.strokeDasharray = `${pathLength} ${pathLength}`;
+    //   // Offset the dashes so the it appears hidden entirely
+    //   path.style.strokeDashoffset = pathLength;
+    //   path.getBoundingClientRect();
+    //   // console.log(`updated path length: ${pathLength}`);
+    //   return pathLength;
+    // })
 
 
     // When the page scrolls...

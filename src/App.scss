@@ -11,20 +11,30 @@ $large: 1440px;
 $xlarge: 1920px; 
 
 // Breakpoints
+
+
 @mixin mobile {
-  @media (max-width: $small) { @content; }
+  @media only screen and (min-width: $xsmall) and (max-width: $small) { @content; }
 }
 
-@mixin tablet-portrait {
-  @media (max-width: $medium) { @content; }
+// mobile
+@mixin tablet {
+  @media only screen and (max-width: $small) { @content; }
 }
 
+// tablet-portrait
 @mixin tablet-landscape {
-  @media (max-width: $large) { @content; }
+  @media only screen and (max-width: $medium) { @content; }
 }
 
-@mixin xlargeDesktop {
-  @media (max-width: $xlarge) { @content; }
+// tablet landscape
+@mixin desktop {
+  @media only screen and (max-width: $large) { @content; }
+}
+
+// xlargedesktop
+@mixin large-desktop {
+  @media only screen and (max-width: $xlarge) { @content; }
 }
 
 
@@ -32,16 +42,13 @@ $xlarge: 1920px;
 html {
   background-color: #fafafa;
   font-size: 16px;
-  @include tablet-portrait {
+  @include tablet-landscape {
     font-size: 14px;
   } 
 }
 
 body {
   font-family: 'proxima-nova', sans-serif;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
 }
 
 h1 {
@@ -49,11 +56,11 @@ h1 {
   font-weight: 300;
   margin: 0;
   margin-left: 80px;
-  @include tablet-portrait {
+  @include tablet-landscape {
     font-size: 2rem;
     margin-left: 50px;
   }
-  @include mobile {
+  @include tablet {
     margin-left: 5%;
   }
 }
@@ -62,8 +69,19 @@ h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
-  @include tablet-portrait {
+  @include tablet-landscape {
     font-size: 1.28rem;
   }
+}
+
+p {
+  font-weight: 300;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 
