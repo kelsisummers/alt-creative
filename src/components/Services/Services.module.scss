@@ -27,12 +27,12 @@
   }
 
   &__copy {
-    width: 90%;
+    width: 81%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
-    padding-top: 50px;
-    margin-left: 25px;
+    position: absolute;
+    top: 35%;
+    right: 0;
     @include mobile {
       flex-flow: column wrap;
       margin-left: 5%;
@@ -54,7 +54,7 @@
     height: 100%;
     overflow: hidden;
     position: absolute;
-    bottom: 140;
+    top: 85px;
     @include mobile {
       display: none;
     }

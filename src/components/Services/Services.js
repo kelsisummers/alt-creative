@@ -8,49 +8,6 @@ export default class Services extends React.Component {
   componentDidMount(props) {
     // Destructure Props
     const { createPath } = this.props;
-
-    // Initialize Variable for Resized SVG Path
-    let updatedPath;
-
-    // Get Component Width
-    let componentWidth = document.documentElement.clientWidth;
-    // console.log(componentWidth)
-
-    // Responsive SVG Paths
-    const svgPath = (componentWidth) => {
-      switch (true) {
-        case (componentWidth <= 1440 && componentWidth > 1024):
-          updatedPath = 'M0,12h14V25h90';
-          break;
-        case (componentWidth <= 1024 && componentWidth > 900):
-          updatedPath = 'M0,8h14V25h90';
-          break;
-        case (componentWidth <= 900 && componentWidth > 800):
-          updatedPath = 'M0,8h14V28h90';
-          break;
-        case (componentWidth <= 800):
-          updatedPath = 'M0,4h17V38h90';
-          break;
-        default :
-          updatedPath = ("M0,16h14V25h90")
-      }
-      if (componentWidth > 768) {
-        document.getElementById('services-path').setAttribute('d', updatedPath);
-      }
-    }
-    
-    // Set SVG Path On Page Load
-    window.onload = svgPath(componentWidth);
-
-    // // When Window is Resized...
-    // window.addEventListener('resize', function(e) {
-    //   // Update Component Width
-    //   componentWidth = document.documentElement.clientWidth;
-    //   // console.log(`updated width: ${componentWidth}`);
-
-    //   // Update Path Depending on Component Width
-    //   svgPath(componentWidth);
-    // })
     
     // Calls createPath Animation Function
     createPath('services', 5000, .11, 2.7);
@@ -77,9 +34,9 @@ export default class Services extends React.Component {
       </div>
   
       <div className={styles.Services__animation}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 100.6 107.6" id="services-svg" className={styles.Services__svg} >
+            <svg xmlns="http://www.w3.org/2000/svg"  height='100%' width="100%" viewBox="0 0 100.6 107.6" id="services-svg" preserveAspectRatio="none" className={styles.Services__svg} >
                 <path vectorEffect="non-scaling-stroke" id='services-path' className={styles.Services__path} fill="none" strokeWidth="3" stroke="#000" 
-                d="M0,16h14V25h90" />
+                d="M0,16h16V75h90" />
             </svg>
       </div>
     </div>
