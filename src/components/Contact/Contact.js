@@ -15,10 +15,10 @@ export default class Contact extends React.Component {
     window.addEventListener('resize', function(e){
       if (!throttled) {
         throttled = true;
+        createPath('contact', 500, .7, 3);
         setTimeout(function() {
           throttled = false;
-          createPath('contact', 500, .7, 3);
-        }, 250);
+        }, 150);
       } 
     });
   }

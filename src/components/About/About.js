@@ -8,20 +8,23 @@ export default class About extends React.Component {
     // Call createPath Animation Function
     const { createPath } = this.props;
     // Calls createPath Animation Function
-    createPath('about', 25000, .3, 1);
+    createPath('about', 5000, .3, 1);
 
     let throttled;
     // Resizes SVG Animation + Throttle
     window.addEventListener('resize', function(e){
       if (!throttled) {
         throttled = true;
+        createPath('about', 20000, .3, 1);
         setTimeout(function() {
           throttled = false;
-          createPath('about', 25000, .3, 1);
-        }, 250);
+        }, 150);
       } 
     });
   }
+
+
+  
   render(){
     return (
       <div className={styles.About} id="about">

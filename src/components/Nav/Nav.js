@@ -7,24 +7,31 @@ import { Link } from 'react-scroll'
 const Nav = (props) => {
   // Destructing Props
   const { checkMobile, isMobile, handleClick, activeTab } = props;
-  
-  function debounce(func){
-    var timer;
-    return function(event){
-      if(timer) clearTimeout(timer);
-      timer = setTimeout(func,1000,event);
-    };
-  }
 
-  // // Calls checkMobile() Function on Page Load
-  // window.addEventListener('load', function(e){
-  //   checkMobile();
-  // });
-  
-  // // Calls checkMobile() Function When Screen is Resized
-  // window.addEventListener('resize', debounce(function(e){
-  //   checkMobile();
-  // }));
+  let throttled;
+  // Calls checkMobile() Function on Page Load
+  window.addEventListener('load', function(e){
+    if (!throttled) {
+      throttled = true;
+
+      setTimeout(function() {
+        throttled = false;
+        checkMobile();
+      }, 1000);
+    } 
+  });
+
+  // Calls checkMobile() Function When Screen is Resized
+  window.addEventListener('resize', function(e){
+    if (!throttled) {
+      throttled = true;
+
+      setTimeout(function() {
+        throttled = false;
+        checkMobile();
+      }, 1000);
+    } 
+  });
 
   // Default Styles for Services Link on Mobile
   const style = {
@@ -51,10 +58,21 @@ const Nav = (props) => {
             <Link href="#services" activeClass={styles.Nav__links_active } to="services" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>}
           </li>
           <li>
-            <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link> 
+          {isMobile && activeTab === 'about' ? 
+            <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>
+            <span style={style}>About</span></Link>
+            : 
+            <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link>}
           </li>
           <li>
-            <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>
+            {isMobile && activeTab === 'contact' ? 
+            <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>
+            <span style={style}>Contact</span></Link>
+            : 
+            <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>}
+
+
+
           </li>
         </ul>
       </div>

@@ -15,10 +15,10 @@ export default class Hero extends React.Component {
     window.addEventListener('resize', function(e){
       if (!throttled) {
         throttled = true;
+        createPath('hero', 5000, 0, 5);
         setTimeout(function() {
           throttled = false;
-          createPath('hero', 5000, 0, 5);
-        }, 250);
+        }, 150);
       } 
     });
   }
