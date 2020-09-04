@@ -9,6 +9,18 @@ export default class Hero extends React.Component {
     // Calls createPath Animation Function from Props
     const { createPath } = this.props;
     createPath('hero', 5000, 0, 5);
+    
+    let throttled;
+    // Resizes SVG Animation + Throttle
+    window.addEventListener('resize', function(e){
+      if (!throttled) {
+        throttled = true;
+        setTimeout(function() {
+          throttled = false;
+          createPath('hero', 5000, 0, 5);
+        }, 250);
+      } 
+    });
   }
   render() {
     return (

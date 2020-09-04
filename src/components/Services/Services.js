@@ -7,10 +7,28 @@ export default class Services extends React.Component {
   // When Component Mounts
   componentDidMount(props) {
     // Destructure Props
-    const { createPath } = this.props;
-    
+    const { createPath } = this.props; 
     // Calls createPath Animation Function
     createPath('services', 5000, .11, 2.7);
+
+    let throttled;
+    // let timeout = false;
+    // window.addEventListener('resize', function(e){
+    //   clearTimeout(timeout);
+    //   setTimeout(function() { 
+    //     createPath('services', 5000, .11, 2.7)}, 5000);
+    // });
+    
+    // Resizes SVG Animation + Throttle
+    window.addEventListener('resize', function(e){
+      if (!throttled) {
+        throttled = true;
+        setTimeout(function() {
+          throttled = false;
+          createPath('services', 5000, .11, 2.7);
+        }, 250);
+      } 
+    });
   }
   render() {
     return (

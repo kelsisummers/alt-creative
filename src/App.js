@@ -18,6 +18,12 @@ export default class App extends React.Component {
     this.createPath = this.createPath.bind(this);
   }
 
+  getWidth() {
+    let width = document.documentElement.clientWidth;
+    console.log(width);
+    return width;
+  }
+
   // Checks ScreenWidth to Determine if User is on Mobile Device
   checkMobile() {
     let width = document.documentElement.clientWidth;
@@ -53,17 +59,10 @@ export default class App extends React.Component {
     }
   }
 
-  getWidth() {
-    let width = document.documentElement.clientWidth;
-    console.log(width);
-    return width;
-  }
-
   // Function to Create SVG Animation
   createPath(component, extraLength, offset, speed) {
     // Get a reference to the <path>
     const path = document.querySelector(`#${component}-path`);
-    // console.log(path);
   
     let widthOutput = document.documentElement.clientWidth;
     // console.log(`initial value: ${widthOutput}`);
@@ -79,19 +78,6 @@ export default class App extends React.Component {
     path.style.strokeDashoffset = pathLength;
       
     path.getBoundingClientRect();
-  
-    // Determines ScreenWidth When Window is Resized
-    window.addEventListener('resize', function(e) {
-      widthOutput = document.documentElement.clientWidth;
-      pathLength = path.getTotalLength() + (widthOutput + extraLength);
-      path.style.strokeDasharray = `${pathLength} ${pathLength}`;
-      // Offset the dashes so the it appears hidden entirely
-      path.style.strokeDashoffset = pathLength;
-      path.getBoundingClientRect();
-      // console.log(`updated path length: ${pathLength}`);
-      return pathLength;
-    })
-  
   
     // When the page scrolls...
     window.addEventListener("scroll", function(e) {

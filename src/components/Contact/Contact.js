@@ -7,9 +7,20 @@ export default class Contact extends React.Component {
   componentDidMount(props) {
     // Destructuring Props
     const { createPath } = this.props;
-
     // Calls createPath Animation Function
     createPath('contact', 500, .7, 3);
+
+    let throttled;
+    // Resizes SVG Animation + Throttle
+    window.addEventListener('resize', function(e){
+      if (!throttled) {
+        throttled = true;
+        setTimeout(function() {
+          throttled = false;
+          createPath('contact', 500, .7, 3);
+        }, 250);
+      } 
+    });
   }
   render() {
     return (
