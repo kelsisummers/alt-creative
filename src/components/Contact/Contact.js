@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Contact.module.scss';
 
-export default class Contact extends React.Component {
+export default class Contact extends Component {
+
+  handleClick = this.handleClick.bind(this);
+
   // When Component Mounts
   componentDidMount(props) {
     // Destructuring Props
@@ -10,18 +13,33 @@ export default class Contact extends React.Component {
     // Calls createPath Animation Function
     createPath('contact', 1000, .7, 3);
 
-    let throttled;
     // Resizes SVG Animation + Throttle
     window.addEventListener('resize', createPath('contact', 500, .7, 3));
-    // window.addEventListener('resize', function(e){
-    //   if (!throttled) {
-    //     throttled = true;
-    //     createPath('contact', 500, .7, 3);
-    //     setTimeout(function() {
-    //       throttled = false;
-    //     }, 100);
-    //   } 
-    // });
+  }
+
+  async handleClick(e){
+    e.preventDefault();
+    const form = document.querySelector('form');
+    
+    if(!form.checkValidity()) {
+      const errors = document.querySelectorAll('input:invalid');
+      const err = document.querySelector('textarea:invalid');
+      if (errors) {
+        errors.forEach((element) => {
+          element.setAttribute("style", "border: 1px solid red");
+        })
+      }
+      if (err) { 
+        err.setAttribute('style', 'border: 1px solid red');
+      }
+    } 
+    // else {
+    //   const name = document.getElementById('name').value;
+    //   const email = document.getElementById('email').value;
+    //   const subject = document.getElementById('subject').value;
+    //   const message = document.getElementById('message').value;
+    // }
+
   }
   render() {
     return (
@@ -34,16 +52,21 @@ export default class Contact extends React.Component {
               </svg>
           </div>
           <h2>work with us</h2>
-          <form>
+          <form action="https://hooks.zapier.com/hooks/catch/7695150/oa0y361/" method="post">
+
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Name" />
+            <input type="text" required autoComplete="on" id="name" name="name" placeholder="Name" />
+
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" />
+            <input type="email" required autoComplete="on" id="email" name="email" placeholder="Email" />
+
             <label htmlFor="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Subject" />
+            <input type="text" required autoComplete="off" id="subject" name="subject" placeholder="Subject" />
+
             <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" placeholder="Type message here"></textarea>
-            <input type="submit" value="Send" />
+            <textarea id="message" required autoComplete="off" name="message" placeholder="Type message here"></textarea>
+
+            <button onClick={this.handleClick}>Send</button>
           </form>
       </div>
     );

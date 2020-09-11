@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import Main from './pages/Main';
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMobile: false,
-      isActive: false,
-      activeTab: 'services'
-    };
-    this.checkMobile = this.checkMobile.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.createPath = this.createPath.bind(this);
-  }
+export default class App extends Component {
+  state = {
+    isMobile: false,
+    isActive: false,
+    activeTab: 'services'
+  };
+  checkMobile = this.checkMobile.bind(this);
+  handleClick = this.handleClick.bind(this);
+  createPath = this.createPath.bind(this);
 
   // Checks ScreenWidth to Determine if User is on Mobile Device
   checkMobile() {
     const width = document.documentElement.clientWidth;
-    
     if (width <= 768 && !this.state.isMobile){
       this.setState({isMobile: true});
       console.log(this.state.isMobile);

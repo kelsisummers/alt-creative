@@ -1,35 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Services.module.scss';
 
 
-export default class Services extends React.Component {
+export default class Services extends Component {
   // When Component Mounts
   componentDidMount(props) {
     // Destructure Props
     const { createPath } = this.props; 
     // Calls createPath Animation Function
     createPath('services', 5000, .11, 2.7);
-
-    let throttled;
-    // let timeout = false;
-    // window.addEventListener('resize', function(e){
-    //   clearTimeout(timeout);
-    //   setTimeout(function() { 
-    //     createPath('services', 5000, .11, 2.7)}, 5000);
-    // });
     
     // Resizes SVG Animation + Throttle
     window.addEventListener('resize', createPath('services', 5000, .11, 2.7));
-    // window.addEventListener('resize', function(e){
-    //   if (!throttled) {
-    //     throttled = true;
-    //     createPath('services', 5000, .11, 2.7);
-    //     setTimeout(function() {
-    //       throttled = false;
-    //     }, 100);
-    //   } 
-    // });
   }
   render() {
     return (

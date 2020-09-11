@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './About.module.scss';
 
-export default class About extends React.Component {
+export default class About extends Component {
   // When Component Mounts
   componentDidMount(props) {
     // Call createPath Animation Function
@@ -10,18 +10,8 @@ export default class About extends React.Component {
     // Calls createPath Animation Function
     createPath('about', 1000, .3, 1);
 
-    let throttled;
     // Resizes SVG Animation + Throttle
     window.addEventListener('resize', createPath('about', 20000, .3, 1));
-    // window.addEventListener('resize', function(e){
-    //   if (!throttled) {
-    //     throttled = true;
-    //     createPath('about', 20000, .3, 1);
-    //     setTimeout(function() {
-    //       throttled = false;
-    //     }, 100);
-    //   } 
-    // });
   }
   render(){
     return (

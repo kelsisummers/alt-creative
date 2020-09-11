@@ -1,27 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Hero.module.scss';
 
 
-export default class Hero extends React.Component {
+export default class Hero extends Component {
   // When Component Mounts
   componentDidMount(props) {
     // Calls createPath Animation Function from Props
     const { createPath } = this.props;
     createPath('hero', 5000, 0, 5);
     
-    let throttled;
     // Resizes SVG Animation + Throttle
-    // window.addEventListener('resize', createPath('hero', 5000, 0, 5));
-    // window.addEventListener('resize', function(e){
-    //   if (!throttled) {
-    //     throttled = true;
-    //     createPath('hero', 5000, 0, 5);
-    //     setTimeout(function() {
-    //       throttled = false;
-    //     }, 100);
-    //   } 
-    // });
+    window.addEventListener('resize', createPath('hero', 5000, 0, 5));
   }
   render() {
     return (
