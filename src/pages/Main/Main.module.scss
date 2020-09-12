@@ -1,7 +1,9 @@
 .Main {
     width: 100vw;
+    // height: 100%;
+    // margin-bottom: 50px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: hidden;
     flex: 1 0 auto;
 }

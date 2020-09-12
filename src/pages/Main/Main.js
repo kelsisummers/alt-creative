@@ -5,6 +5,7 @@ import Hero from '../../components/Hero';
 import Services from '../../components/Services';
 import About from '../../components/About';
 import Contact from '../../components/Contact';
+// import Footer from '../../components/Footer'
 
 const Main = (props) => {
   // Destructuring Props
@@ -19,7 +20,8 @@ const Main = (props) => {
       {(isMobile && activeTab === 'about') ? <About createPath={createPath} /> : (!isMobile ? <About createPath={createPath} /> : null)}
     
       {(isMobile && activeTab === 'contact') ? <Contact createPath={createPath} /> : (!isMobile ? <Contact createPath={createPath} /> : null)}
-      </div>
+      {/* <Footer /> */}
+    </div>
   )
 }
 

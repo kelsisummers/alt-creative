@@ -1,12 +1,14 @@
 @import '../../App.scss';
 
 .Services {
-  width: 100vw;
+  // width: 100%;
+  // flex: 1 25vw;
+  // flex-flow: column wrap;
+  // justify-content: flex-end;
+  flex: 1 auto;
   display: flex;
-  flex: 1 25vw;
-  flex-flow: column wrap;
-  justify-content: flex-end;
   position: relative;
+  height: 25vw;
   padding-top: 200px;
   @include mobile {
     padding-top: 140px;
@@ -17,6 +19,7 @@
     height: 100%;
     display: flex;
     align-items: baseline;
+    // position: relative;
     @include mobile {
       flex-flow: column wrap;
     }
@@ -24,7 +27,7 @@
 
   &__header {
     width: 10%;
-    align-self: normal;
+    align-self: auto;
   }
 
   &__copy {
@@ -33,13 +36,15 @@
     flex-flow: row wrap;
     justify-content: space-between;
     position: absolute;
-    top: 67%;
+    bottom: 30%;
     right: 0;
     @include mobile {
       flex-flow: column wrap;
       margin-left: 5%;
-      padding-top: 1rem;
-      position: inherit;
+      padding-top: 2rem;
+      // position: inherit;
+      bottom: unset;
+      left: 0;
     }
 
     &_col {
@@ -57,7 +62,7 @@
     height: 100%;
     overflow: hidden;
     position: absolute;
-    top: 205px;
+    top: 200px;
     @include mobile {
       display: none;
     }

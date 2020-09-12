@@ -3,9 +3,11 @@
 @import '../../App.scss';
 
 .Contact {
-  width: 100vw;
+  // width: 100vw;
+  // flex: 1 15vw;
+  // height: 15vw;
   display: flex;
-  flex: 1 15vw;
+  flex: 1 auto;
   flex-direction: column;
   position: relative;
   padding-top: 200px;

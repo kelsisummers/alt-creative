@@ -23,9 +23,7 @@ export default class Hero extends Component {
         </svg>
       </div>
       <div className={styles.Hero__copy}>
-        <div className="test">
         <h1>alt creative</h1>
-        </div>
         <h2>creative work to empower the collective.</h2>
       </div>
     </div>
