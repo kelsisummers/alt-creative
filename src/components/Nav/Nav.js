@@ -33,11 +33,6 @@ const Nav = (props) => {
     } 
   });
 
-  // Default Styles for Services Link on Mobile
-  const style = {
-    color: 'black',
-    textDecoration: 'underline'
-  }
 
   return (
   <div className={styles.Nav}>
@@ -52,22 +47,19 @@ const Nav = (props) => {
           <li>
             {/* Active Tab Styling for Default Link on Mobile */}
             {isMobile && activeTab === 'services' ? 
-            <Link href="#services"  activeClass={styles.Nav__links_active } to="services" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>
-            <span style={style}>Services</span></Link>
+            <Link href="#services"  activeClass={styles.Nav__links_active } className={styles.Nav__mobile} to="services" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>
             : 
             <Link href="#services" activeClass={styles.Nav__links_active } to="services" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>}
           </li>
           <li>
           {isMobile && activeTab === 'about' ? 
-            <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>
-            <span style={style}>About</span></Link>
+            <Link href="#about" activeClass={styles.Nav__links_active } className={styles.Nav__mobile}  to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link>
             : 
             <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link>}
           </li>
           <li>
             {isMobile && activeTab === 'contact' ? 
-            <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>
-            <span style={style}>Contact</span></Link>
+            <Link href="#contact" activeClass={styles.Nav__links_active } className={styles.Nav__mobile} to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>
             : 
             <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>}
 

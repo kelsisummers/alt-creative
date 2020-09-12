@@ -17,7 +17,7 @@ export default class Contact extends Component {
     createPath('contact', 1000, .7, 3);
 
     // Resizes SVG Animation + Throttle
-    window.addEventListener('resize', createPath('contact', 500, .7, 3));
+    window.addEventListener('resize', createPath('contact', 5000, .7, 3));
   }
 
   submitForm(ev) {
@@ -64,6 +64,7 @@ export default class Contact extends Component {
 
             <label htmlFor="message">Message</label>
             <textarea id="message" required autoComplete="off" name="message" placeholder="Type message here"></textarea>
+            <input type="text" name="_gotcha" style={{display:"none"}} />
 
             {status === "SUCCESS" ? <p>Thanks! We'll be in touch.</p> : <button onClick={this.submitForm} type="submit">Send</button> }
             {status === "ERROR" && <p className={styles.Contact__error}>Ooops! There was an error.</p>}

@@ -20,6 +20,11 @@
       justify-content: flex-end;
     }
   }
+
+  &__mobile {
+    color:black !important;
+    text-decoration: underline !important;
+  }
   
   &__logo {
     margin-left: 1.5rem;
@@ -36,6 +41,7 @@
       color: #000 !important;
       text-decoration: underline !important;
     }
+
     
     ul {
       display: flex;

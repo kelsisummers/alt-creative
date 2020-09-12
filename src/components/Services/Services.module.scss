@@ -8,8 +8,8 @@
   justify-content: flex-end;
   position: relative;
   padding-top: 200px;
-  @include tablet {
-    padding-top: 40px;
+  @include mobile {
+    padding-top: 140px;
   }
 
   &__container {
