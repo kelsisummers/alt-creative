@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './Contact.module.scss';
 
 export default class Contact extends Component {
+  state = {
+    status: ""
+  };
 
-  handleClick = this.handleClick.bind(this);
+  submitForm = this.submitForm.bind(this);
 
   // When Component Mounts
   componentDidMount(props) {
@@ -17,31 +20,27 @@ export default class Contact extends Component {
     window.addEventListener('resize', createPath('contact', 500, .7, 3));
   }
 
-  async handleClick(e){
-    e.preventDefault();
-    const form = document.querySelector('form');
-    
-    if(!form.checkValidity()) {
-      const errors = document.querySelectorAll('input:invalid');
-      const err = document.querySelector('textarea:invalid');
-      if (errors) {
-        errors.forEach((element) => {
-          element.setAttribute("style", "border: 1px solid red");
-        })
+  submitForm(ev) {
+    let form = document.getElementById('contact-form');
+    ev.preventDefault();
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        form.reset();
+        this.setState({ status: "SUCCESS" });
+      } else {
+        this.setState({ status: "ERROR" });
       }
-      if (err) { 
-        err.setAttribute('style', 'border: 1px solid red');
-      }
-    } 
-    // else {
-    //   const name = document.getElementById('name').value;
-    //   const email = document.getElementById('email').value;
-    //   const subject = document.getElementById('subject').value;
-    //   const message = document.getElementById('message').value;
-    // }
-
+    };
+    xhr.send(data);
   }
+
   render() {
+    const { status } = this.state;
     return (
       <div className={styles.Contact} id="contact">
           <h1>Contact</h1>
@@ -52,13 +51,13 @@ export default class Contact extends Component {
               </svg>
           </div>
           <h2>work with us</h2>
-          <form action="https://hooks.zapier.com/hooks/catch/7695150/oa0y361/" method="post">
+          <form id="contact-form" action="https://formspree.io/mwkweeep" method="post">
 
             <label htmlFor="name">Name</label>
             <input type="text" required autoComplete="on" id="name" name="name" placeholder="Name" />
 
             <label htmlFor="email">Email</label>
-            <input type="email" required autoComplete="on" id="email" name="email" placeholder="Email" />
+            <input type="email" required autoComplete="on" id="email" name="_replyto" placeholder="Email" />
 
             <label htmlFor="subject">Subject</label>
             <input type="text" required autoComplete="off" id="subject" name="subject" placeholder="Subject" />
@@ -66,7 +65,8 @@ export default class Contact extends Component {
             <label htmlFor="message">Message</label>
             <textarea id="message" required autoComplete="off" name="message" placeholder="Type message here"></textarea>
 
-            <button onClick={this.handleClick}>Send</button>
+            {status === "SUCCESS" ? <p>Thanks! We'll be in touch.</p> : <button onClick={this.submitForm} type="submit">Send</button> }
+            {status === "ERROR" && <p className={styles.Contact__error}>Ooops! There was an error.</p>}
           </form>
       </div>
     );

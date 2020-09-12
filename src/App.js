@@ -3,6 +3,10 @@ import './App.scss';
 import Main from './pages/Main';
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-177881604-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 export default class App extends Component {
   state = {
