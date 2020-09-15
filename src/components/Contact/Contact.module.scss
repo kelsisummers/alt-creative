@@ -26,12 +26,21 @@
     }
   }
 
-  &__error {
+
+  &__formError {
     text-align: center;
-    color: red;
+    color: $errorRed;
     font-weight: 500;
   }
 
+  &__inputErrors {
+    display: inline-flex;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    color: $errorRed;
+    font-size: .875rem;
+    padding-left: .875rem;
+  }
 
   h2 {
     font-size: 2em; 
@@ -65,8 +74,6 @@
     font-family: 'proxima-nova', sans-serif;
   }
 
-
-
   textarea {
     height: 200px;
     padding: .75rem;
@@ -94,14 +101,6 @@
       cursor: pointer;
       opacity: .7;
     }
-  }
-
-  input:not(:placeholder-shown):invalid{
-    border: 1px solid red;
-  }
-
-  textarea:not(:placeholder-shown):invalid{
-    border: 1px solid red;
   }
 
   ::placeholder {

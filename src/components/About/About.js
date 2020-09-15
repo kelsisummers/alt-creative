@@ -10,7 +10,7 @@ export default class About extends Component {
     // Calls createPath Animation Function
     createPath('about', 1000, .3, 1);
 
-    // Resizes SVG Animation + Throttle
+    // Resizes SVG Animation
     window.addEventListener('resize', createPath('about', 20000, .3, 1));
   }
   render(){

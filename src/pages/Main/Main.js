@@ -12,8 +12,9 @@ const Main = (props) => {
   const { isMobile, activeTab, createPath } = props;
   return (
     <div className={styles.Main}>
-      <Hero createPath={createPath} />
 
+      {isMobile ? null : <Hero createPath={createPath} />}
+      
       {/* Conditionally Render Components If On Mobile Device */}
       {(isMobile && activeTab === 'services') ? <Services createPath={createPath} /> : (!isMobile ? <Services createPath={createPath} /> : null)}
 

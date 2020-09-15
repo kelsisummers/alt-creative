@@ -11,7 +11,7 @@ export default class Services extends Component {
     // Calls createPath Animation Function
     createPath('services', 5000, .11, 2.7);
     
-    // Resizes SVG Animation + Throttle
+    // Resizes SVG Animation
     window.addEventListener('resize', createPath('services', 5000, .11, 2.7));
   }
   render() {

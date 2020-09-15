@@ -3,16 +3,18 @@
 // Normalize SCSS
 @import '../node_modules/normalize-scss/sass/normalize/import-now';
 
+// Colors
+$errorRed: #cc0000;
+$backgroundColor: #fafafa;
+
 // Screen Size Variables
 $xsmall: 320px;
 $small: 768px;
 $medium: 1024px;
 $large: 1440px;
-$xlarge: 1920px; 
+$xlarge: 1920px;
 
 // Breakpoints
-
-
 @mixin mobile {
   @media only screen and (min-width: $xsmall) and (max-width: $small) { @content; }
 }
@@ -40,7 +42,7 @@ $xlarge: 1920px;
 
 /* Global Styles */
 html {
-  background-color: #fafafa;
+  background-color: $backgroundColor;
   font-size: 16px;
   // width: 100vw;
   @include tablet-landscape {
