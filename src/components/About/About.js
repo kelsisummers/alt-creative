@@ -28,7 +28,6 @@ export default class About extends Component {
           <div>
           <p>the alternative solution. woman-owned and run. specializing in creative services for web.</p>
           <p>we aim to support and empower our clients through an empathic creative process.</p>
-
           </div>
 
         </div>
