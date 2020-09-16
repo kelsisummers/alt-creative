@@ -55,14 +55,12 @@ export default class Contact extends Component {
     const form = document.getElementById('contact-form');
     const error = form.checkValidity();
     let errArr = [];
-    console.log(errArr)
     const formErr = document.getElementById('form-error');
     if (!error && !formErr) {
       const list = form.querySelectorAll(':invalid');
       for (const item of list) {
         let err = item.validationMessage;
         errArr.push(err)
-        console.log(errArr)
         item.style.border = '1px solid #cc0000'
       }
       if (errArr.includes('Please fill out this field.')) {
@@ -73,11 +71,9 @@ export default class Contact extends Component {
         p.innerText = "Please fill out required inputs.";
         button.after(p);
         errArr = [];
-        console.log(errArr)
       }
     } else if (!error && formErr) {
       errArr = [];
-      console.log(errArr)
       formErr.innerText = "There's still an error."
       const list = form.querySelectorAll(':invalid');
       for (const item of list) {
@@ -89,11 +85,9 @@ export default class Contact extends Component {
       for (const item of fixed) {
         item.style.border = '1px solid #ccc'
       }
-      console.log(errArr)
     } else if (error && formErr) {
       formErr.remove();
       errArr = [];
-      console.log(errArr)
       const list = form.querySelectorAll(':valid');
       for (const item of list) {
         item.style.border = '1px solid #ccc'

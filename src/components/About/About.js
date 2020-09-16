@@ -25,7 +25,12 @@ export default class About extends Component {
           </div>
         <div className={styles.About__content}>
           <img src="../assets/headshot.png" alt="Founder Kelsi Summers" />
-          <p>womxn-owned and run. specializing in creative services for web. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Pulvinar etiam non quam lacus suspendisse faucibus. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non. Fusce ut placerat orci nulla pellentesque dignissim enim..</p>
+          <div>
+          <p>the alternative solution. woman-owned and run. specializing in creative services for web.</p>
+          <p>we aim to support and empower our clients through an empathic creative process.</p>
+
+          </div>
+
         </div>
       </div>
     );

@@ -43,7 +43,7 @@
       }
     }
     
-    p {
+    div {
       width: 30%;
       max-width: 500px;
       margin: 0 20px 0 7%;
@@ -51,21 +51,30 @@
       align-self: flex-end;
       @include desktop {
         width: 35%;
-        font-size: 1.25rem;
+        p {
+          font-size: 1.25rem;
+        }
       }
       @media only screen and (min-width: $medium) {
-        font-size: 1rem;
+        p {
+          font-size: 1rem;
+        }
+
       }
       @media only screen and (min-width: $small) and (max-width: $medium) {
-        font-size: .86rem;
         width: 38%;
+        p {
+          font-size: .86rem;
+        }
       }
       @include mobile {
-        font-size: 1rem;
         width: 90%;
         min-width: 280px;
         max-width: 570px;
         margin: 7% auto 0 auto;
+        p {
+          font-size: 1rem;
+        }
       }
     }
   }
