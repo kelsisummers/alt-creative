@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './About.module.scss';
-import headshot from '../../../public/assets/headshot.png'
+import headshot from '../../assets/headshot.png'
 
 export default class About extends Component {
   // When Component Mounts

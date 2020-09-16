@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Nav.module.scss';
 import { Link } from 'react-scroll'
-import logo from '../../../public/assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
 
 const Nav = (props) => {
