@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './About.module.scss';
+import headshot from '../../../public/assets/headshot.png'
 
 export default class About extends Component {
   // When Component Mounts
@@ -24,7 +25,7 @@ export default class About extends Component {
           </svg>
           </div>
         <div className={styles.About__content}>
-          <img src="../assets/headshot.png" alt="Founder Kelsi Summers" />
+          <img src={headshot} alt="Founder Kelsi Summers" />
           <div>
           <p>the alternative solution. woman-owned and run. specializing in creative services for web.</p>
           <p>we aim to support and empower our clients through an empathic creative process.</p>

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Nav.module.scss';
 import { Link } from 'react-scroll'
+import logo from '../../../public/assets/logo.svg';
 
 
 const Nav = (props) => {
@@ -39,7 +40,7 @@ const Nav = (props) => {
     <nav>
       <div className={styles.Nav__logo}>
         <a href="/">
-          <img src="../assets/logo.svg"  alt="Alt Creative Logo" />
+          <img src={logo}  alt="Alt Creative Logo" />
         </a>
       </div>
       <div className={styles.Nav__links}>
