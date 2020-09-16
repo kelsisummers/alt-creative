@@ -26,19 +26,25 @@ export default class Contact extends Component {
     const id = e.target.getAttribute('id');
     const input = document.getElementById(id);
     const findError = input.checkValidity();
-    const errorMSG = document.getElementById(`${id}-error`);
+    let errorMSG = document.getElementById(`${id}-error`);
+    let errorText;
 
     if (!findError && !errorMSG) {
       const span = document.createElement('span');
       span.id = `${id}-error`;
-      span.classList.add(styles.Contact__error);
+      span.classList.add(styles.Contact__inputErrors);
       input.after(span);
       input.style.border = "1px solid #cc0000";
-      const errorText = input.validationMessage;
-      span.innerText = errorText;
+      errorMSG = document.getElementById(`${id}-error`);
+      errorText = input.validationMessage;
+      errorMSG.innerText = errorText;
     } else if (findError && errorMSG) {
         errorMSG.remove();
         input.style.border = '1px solid #ccc'
+    } else if (!findError && errorMSG) {
+      errorMSG = document.getElementById(`${id}-error`);
+      errorText = input.validationMessage;
+      errorMSG.innerText = errorText;
     }
   }
 
