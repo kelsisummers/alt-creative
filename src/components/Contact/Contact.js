@@ -45,6 +45,8 @@ export default class Contact extends Component {
       errorMSG = document.getElementById(`${id}-error`);
       errorText = input.validationMessage;
       errorMSG.innerText = errorText;
+    } else {
+      input.style.border = '1px solid #ccc'
     }
   }
 
@@ -53,25 +55,50 @@ export default class Contact extends Component {
     const form = document.getElementById('contact-form');
     const error = form.checkValidity();
     let errArr = [];
+    console.log(errArr)
     const formErr = document.getElementById('form-error');
     if (!error && !formErr) {
       const list = form.querySelectorAll(':invalid');
       for (const item of list) {
         let err = item.validationMessage;
         errArr.push(err)
-        console.log(item)
+        console.log(errArr)
         item.style.border = '1px solid #cc0000'
       }
       if (errArr.includes('Please fill out this field.')) {
         const button = document.getElementById('submit-button');
         const p = document.createElement('p');
         p.id = "form-error"
-        p.classList.add(styles.Contact__inputErrors);
+        p.classList.add(styles.Contact__formError);
         p.innerText = "Please fill out required inputs.";
         button.after(p);
         errArr = [];
+        console.log(errArr)
       }
-    }
+    } else if (!error && formErr) {
+      errArr = [];
+      console.log(errArr)
+      formErr.innerText = "There's still an error."
+      const list = form.querySelectorAll(':invalid');
+      for (const item of list) {
+        let err = item.validationMessage;
+        errArr.push(err)
+        item.style.border = '1px solid #cc0000'
+      }
+      const fixed = form.querySelectorAll(':valid');
+      for (const item of fixed) {
+        item.style.border = '1px solid #ccc'
+      }
+      console.log(errArr)
+    } else if (error && formErr) {
+      formErr.remove();
+      errArr = [];
+      console.log(errArr)
+      const list = form.querySelectorAll(':valid');
+      for (const item of list) {
+        item.style.border = '1px solid #ccc'
+      }
+    } 
     e.preventDefault();
     // const data = new FormData(form);
     // const xhr = new XMLHttpRequest();
@@ -102,19 +129,26 @@ export default class Contact extends Component {
           </div>
           <h2 id="subtext">work with us</h2>
           <form id="contact-form" action="https://formspree.io/mwkweeep" method="post">
+            <div className={styles.Contact__inputs}>
+              <label htmlFor="name">Name</label>
+              <input type="text" onBlur={this.checkError} required autoComplete="on" id="name" name="name" placeholder="Name" />
+            </div>
 
-            <label htmlFor="name">Name</label>
-            <input type="text" onBlur={this.checkError} required autoComplete="on" id="name" name="name" placeholder="Name" />
+            <div className={styles.Contact__inputs}>
+              <label htmlFor="email">Email</label>
+              <input type="email" onBlur={this.checkError} required autoComplete="on" id="email" name="_replyto" placeholder="Email" />
+            </div>
 
-            <label htmlFor="email">Email</label>
-            <input type="email" onBlur={this.checkError} required autoComplete="on" id="email" name="_replyto" placeholder="Email" />
+            <div className={styles.Contact__inputs}>
+              <label htmlFor="subject">Subject</label>
+              <input type="text" onBlur={this.checkError} required autoComplete="off" id="subject" name="subject" placeholder="Subject" />
+            </div>
 
-            <label htmlFor="subject">Subject</label>
-            <input type="text" onBlur={this.checkError} required autoComplete="off" id="subject" name="subject" placeholder="Subject" />
-
-            <label htmlFor="message">Message</label>
-            <textarea id="message" onBlur={this.checkError} required autoComplete="off" name="message" placeholder="Type message here"></textarea>
-            <input type="text" name="_gotcha" style={{display:"none"}} />
+            <div className={styles.Contact__inputs}>
+              <label htmlFor="message">Message</label>
+              <textarea id="message" onBlur={this.checkError} required autoComplete="off" name="message" placeholder="Type message here"></textarea>
+              <input type="text" name="_gotcha" style={{display:"none"}} />
+            </div>
 
             {status === "SUCCESS" ? <p>Thanks! We'll be in touch.</p> : <button onClick={this.submitForm} type="submit" id='submit-button'>Send</button> }
             {status === "ERROR" && <p className={styles.Contact__formError}>Ooops! There was an error.</p>}
