@@ -4,12 +4,16 @@ import styles from './Contact.module.scss';
 
 export default class Contact extends Component {
   state = {
-    status: "",
-    executed: false
+    executed: false,
+    success: false,
+    error: '',
+    form: {
+      name: '',
+      replyto: '',
+      subject: '',
+      message: '',
+    },
   };
-
-  checkError = this.checkError.bind(this);
-  submitForm = this.submitForm.bind(this);
 
   // When Component Mounts
   componentDidMount(props) {
@@ -22,27 +26,27 @@ export default class Contact extends Component {
     window.addEventListener('resize', createPath('contact', 5000, .7));
   }
 
-  checkError(e) {
-    const id = e.target.getAttribute('id');
-    const input = document.getElementById(id);
+  checkError(fieldID) {
+
+    const input = document.getElementById(fieldID);
     const findError = input.checkValidity();
-    let errorMSG = document.getElementById(`${id}-error`);
+    let errorMSG = document.getElementById(`${fieldID}-error`);
     let errorText;
 
     if (!findError && !errorMSG) {
       const span = document.createElement('span');
-      span.id = `${id}-error`;
+      span.id = `${fieldID}-error`;
       span.classList.add(styles.Contact__inputErrors);
       input.after(span);
       input.style.border = "1px solid #cc0000";
-      errorMSG = document.getElementById(`${id}-error`);
+      errorMSG = document.getElementById(`${fieldID}-error`);
       errorText = input.validationMessage;
       errorMSG.innerText = errorText;
     } else if (findError && errorMSG) {
         errorMSG.remove();
         input.style.border = '1px solid #ccc'
     } else if (!findError && errorMSG) {
-      errorMSG = document.getElementById(`${id}-error`);
+      errorMSG = document.getElementById(`${fieldID}-error`);
       errorText = input.validationMessage;
       errorMSG.innerText = errorText;
     } else {
@@ -50,102 +54,149 @@ export default class Contact extends Component {
     }
   }
 
+  validateForm(formData) {
 
-  submitForm(e) {
+    let valid = true;
+    Object.keys(formData).map(field => {
+      if (!formData[field]) {
+        valid = false;
+      }
+    });
+
     const form = document.getElementById('contact-form');
-    const error = form.checkValidity();
-    let errArr = [];
-    const formErr = document.getElementById('form-error');
-    if (!error && !formErr) {
-      const list = form.querySelectorAll(':invalid');
-      for (const item of list) {
-        let err = item.validationMessage;
-        errArr.push(err)
-        item.style.border = '1px solid #cc0000'
-      }
-      if (errArr.includes('Please fill out this field.')) {
-        const button = document.getElementById('submit-button');
-        const p = document.createElement('p');
-        p.id = "form-error"
-        p.classList.add(styles.Contact__formError);
-        p.innerText = "Please fill out required inputs.";
-        button.after(p);
-        errArr = [];
-      }
-    } else if (!error && formErr) {
-      errArr = [];
-      formErr.innerText = "There's still an error."
-      const list = form.querySelectorAll(':invalid');
-      for (const item of list) {
-        let err = item.validationMessage;
-        errArr.push(err)
-        item.style.border = '1px solid #cc0000'
-      }
-      const fixed = form.querySelectorAll(':valid');
-      for (const item of fixed) {
-        item.style.border = '1px solid #ccc'
-      }
-    } else if (error && formErr) {
-      formErr.remove();
-      errArr = [];
-      const list = form.querySelectorAll(':valid');
-      for (const item of list) {
-        item.style.border = '1px solid #ccc'
-      }
-    } 
-    e.preventDefault();
-    // const data = new FormData(form);
-    // const xhr = new XMLHttpRequest();
-    // xhr.open(form.method, form.action);
-    // xhr.setRequestHeader("Accept", "application/json");
-    // xhr.onreadystatechange = () => {
-    //   if (xhr.readyState !== XMLHttpRequest.DONE) return;
-    //   if (xhr.status === 200) {
-    //     form.reset();
-    //     this.setState({ status: "SUCCESS" });
-    //   } else {
-    //     this.setState({ status: "ERROR" });
-    //   }
-    // };
-    // xhr.send(data);
+    const errArr = [];
+    const list = form.querySelectorAll(':invalid');
+
+    for (const item of list) {
+      let err = item.validationMessage;
+      errArr.push(err)
+      item.style.border = '1px solid #cc0000'
+    }
+
+    const fixed = form.querySelectorAll(':valid');
+
+    for (const item of fixed) {
+      item.style.border = '1px solid #ccc'
+    }
+
+    return valid
+  }
+
+  async submitForm(e) {
+
+    if (!this.validateForm(this.state.form)) {
+      this.setState({ error: 'Please fill out required inputs' })
+      return;
+    }
+
+    const url = 'https://formspree.io/mwkweeep';
+    const method = 'POST';
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify(this.state.form);
+
+    console.log('Have request to send to formspree: ', this.state.form);
+
+    let res;
+    try {
+
+      res = await fetch(url, { method, headers, body });
+    } catch(err) {
+
+      console.log('Error sending request to formspree: ', err);
+      this.setState({ error: 'Ooops! There was an error.' });
+      return;
+    }
+
+    if (res.status !== 200) {
+
+      console.log('Error sending request to formspree: ', res);
+      this.setState({ error: 'Ooops! There was an error.' });
+      return;
+    }
+
+    this.setState({ success: true, error: '' });
+  }
+
+  handleFieldChange(fieldName, value) {
+
+    const { form } = this.state;
+    const newForm = { ...form, [fieldName]: value };
+    this.setState({ form: newForm });
   }
 
   render() {
-    const { status } = this.state;
+
     return (
       <div className={styles.Contact} id="contact">
           <h1>Contact</h1>
           <div className={styles.Contact__animation}>
               <svg xmlns="http://www.w3.org/2000/svg" height='100%' width="100%" viewBox="0 0 100.6 107.6" preserveAspectRatio="none" id="contact-svg" className={styles.Contact__svg} >
-                <path vectorEffect="non-scaling-stroke" id='contact-path' className={styles.Contact__path} fill="none" strokeWidth="3" stroke="#000" 
+                <path vectorEffect="non-scaling-stroke" id='contact-path' className={styles.Contact__path} fill="none" strokeWidth="3" stroke="#000"
                   d="M0,2h75V100h30" />
               </svg>
           </div>
           <h2 id="subtext">work with us</h2>
-          <form id="contact-form" action="https://formspree.io/mwkweeep" method="post">
+
+          <form id="contact-form" onSubmit={(e) => e.preventDefault()}>
             <div className={styles.Contact__inputs}>
               <label htmlFor="name">Name</label>
-              <input type="text" onBlur={this.checkError} required autoComplete="on" id="name" name="name" placeholder="Name" />
+              <input
+                type="text"
+                onChange={(e) => this.handleFieldChange('name', e.target.value)}
+                onBlur={() => this.checkError('name')}
+                required
+                autoComplete="on"
+                id="name"
+                name="name"
+                placeholder="Name"
+              />
             </div>
 
             <div className={styles.Contact__inputs}>
               <label htmlFor="email">Email</label>
-              <input type="email" onBlur={this.checkError} required autoComplete="on" id="email" name="_replyto" placeholder="Email" />
+              <input
+                type="email"
+                onChange={(e) => this.handleFieldChange('replyto', e.target.value)}
+                onBlur={() => this.checkError('email')}
+                required
+                autoComplete="on"
+                id="email"
+                name="_replyto"
+                placeholder="Email"
+              />
             </div>
 
             <div className={styles.Contact__inputs}>
               <label htmlFor="subject">Subject</label>
-              <input type="text" onBlur={this.checkError} required autoComplete="off" id="subject" name="subject" placeholder="Subject" />
+              <input
+                type="text"
+                onChange={(e) => this.handleFieldChange('subject', e.target.value)}
+                onBlur={() => this.checkError('subject')}
+                required
+                autoComplete="off"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+              />
             </div>
 
             <div className={styles.Contact__inputs}>
               <label htmlFor="message">Message</label>
-              <textarea id="message" onBlur={this.checkError} required autoComplete="off" name="message" placeholder="Type message here"></textarea>
+              <textarea
+                id="message"
+                onChange={(e) => this.handleFieldChange('message', e.target.value)}
+                onBlur={() => this.checkError('message')}
+                required
+                autoComplete="off"
+                name="message"
+                placeholder="Type message here" />
               <input type="text" name="_gotcha" style={{display:"none"}} />
             </div>
 
-            {status === "SUCCESS" ? <p>Thanks! We'll be in touch.</p> : <button onClick={this.submitForm} type="submit" id='submit-button'>Send</button> }
-            {status === "ERROR" && <p className={styles.Contact__formError}>Ooops! There was an error.</p>}
+            {this.state.success && <p>Thanks! We'll be in touch.</p>}
+            {this.state.error && <p className={styles.Contact__formError}>{this.state.error}</p>}
+
+            <button onClick={() => this.submitForm()} disabled={this.state.success} id='submit-button'>Send</button>
           </form>
       </div>
     );

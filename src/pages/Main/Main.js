@@ -14,12 +14,12 @@ const Main = (props) => {
     <div className={styles.Main}>
 
       {isMobile ? null : <Hero createPath={createPath} />}
-      
+
       {/* Conditionally Render Components If On Mobile Device */}
       {(isMobile && activeTab === 'services') ? <Services createPath={createPath} /> : (!isMobile ? <Services createPath={createPath} /> : null)}
 
       {(isMobile && activeTab === 'about') ? <About createPath={createPath} /> : (!isMobile ? <About createPath={createPath} /> : null)}
-    
+
       {(isMobile && activeTab === 'contact') ? <Contact createPath={createPath} /> : (!isMobile ? <Contact createPath={createPath} /> : null)}
       {/* <Footer /> */}
     </div>
