@@ -9,10 +9,10 @@ export default class Services extends Component {
     // Destructure Props
     const { createPath } = this.props; 
     // Calls createPath Animation Function
-    createPath('services', 5000, .11, 2.7);
+    createPath('services', 5000, .11);
     
     // Resizes SVG Animation
-    window.addEventListener('resize', createPath('services', 5000, .11, 2.7));
+    window.addEventListener('resize', createPath('services', 5000, .11));
   }
   render() {
     return (
@@ -38,7 +38,7 @@ export default class Services extends Component {
       <div className={styles.Services__animation}>
             <svg xmlns="http://www.w3.org/2000/svg"  height='100%' width="100%" viewBox="0 0 100.6 107.6" id="services-svg" preserveAspectRatio="none" className={styles.Services__svg} >
                 <path vectorEffect="non-scaling-stroke" id='services-path' className={styles.Services__path} fill="none" strokeWidth="3" stroke="#000" 
-                d="M0,16h16V60h90" />
+                d="M0,16h16V80h90" />
             </svg>
       </div>
     </div>

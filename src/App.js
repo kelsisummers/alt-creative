@@ -54,7 +54,7 @@ export default class App extends Component {
   }
 
   // Function to Create SVG Animation
-  createPath(component, extraLength, offset, speed) {
+  createPath(component, extraLength, offset) {
   
     // Get Width of Screen
     const widthOutput = document.documentElement.clientWidth;
@@ -87,7 +87,7 @@ export default class App extends Component {
       let scrollOffset = scrollPercentage - offset;
             
       // Length to offset the dashes
-      let drawLength = (pathLength * scrollOffset) * speed;
+      let drawLength = pathLength * scrollOffset;
       // console.log(drawLength);
           
       // Draw in reverse
@@ -106,7 +106,6 @@ export default class App extends Component {
   render(){
     return (
       <div className="App">
-        <header className="App-header"></header>
         <Nav activeTab={this.state.activeTab} handleClick={this.handleClick} checkMobile={this.checkMobile} isMobile={this.state.isMobile}/>
         <Main createPath={this.createPath} getWidth={this.getWidth} activeTab={this.state.activeTab} isMobile={this.state.isMobile}/>
         <Footer />

@@ -1,24 +1,25 @@
 @import '../../App.scss';
 
 .Services {
+  height: 25vw;
+  flex: 1 0 auto;
   // width: 100%;
   // flex: 1 25vw;
   // flex-flow: column wrap;
   // justify-content: flex-end;
-  flex: 1 auto;
-  display: flex;
-  position: relative;
-  height: 25vw;
+  // display: flex;
+  // position: relative;
   padding-top: 200px;
   @include mobile {
-    padding-top: 140px;
+    padding-top: 30px;
+    height: auto;
   }
 
   &__container {
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: baseline;
+    // align-items: baseline;
     // position: relative;
     @include mobile {
       flex-flow: column wrap;
@@ -26,25 +27,31 @@
   }
 
   &__header {
-    width: 10%;
-    align-self: auto;
+    // width: 10%;
+    // align-self: auto;
   }
 
   &__copy {
-    width: 81%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 30%;
-    right: 0;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 3rem;
+    position: relative;
+    bottom: -14%;
+    right: -4%;
+    // width: 81%;
+    // flex-flow: row wrap;
+    // justify-content: space-between;
     @include mobile {
+      display: unset;
       flex-flow: column wrap;
       margin-left: 5%;
+      margin-right: 5%;
       padding-top: 2rem;
-      // position: inherit;
       bottom: unset;
       left: 0;
+      position: inherit;
+      height: auto;
     }
 
     &_col {
@@ -61,8 +68,8 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: absolute;
-    top: 200px;
+    position: relative;
+    top: -90%;
     @include mobile {
       display: none;
     }
