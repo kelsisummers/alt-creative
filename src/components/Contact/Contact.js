@@ -20,10 +20,10 @@ export default class Contact extends Component {
     // Destructuring Props
     const { createPath } = this.props;
     // Calls createPath Animation Function
-    createPath('contact', 1000, .8);
+    createPath('contact', 2000, .7, 2);
 
     // Resizes SVG Animation
-    window.addEventListener('resize', createPath('contact', 1000, .8));
+    window.addEventListener('resize', createPath('contact', 2000, .7, 2));
   }
 
   checkError(fieldID) {
