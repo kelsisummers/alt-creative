@@ -25,6 +25,9 @@
     @media only screen and (max-width: 1200px) {
       margin-top: -15%;
     }
+    @include mobile {
+      margin-top: 0%;
+    }
   }
 
   &__copy {
