@@ -1,19 +1,8 @@
 @import '../../App.scss';
 
 .Main {
-    // margin-top: 80px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     flex: 2 0 auto;
-    // flex-grow: 1;
-    @include mobile {
-        // margin-top: 100px;
-    }
-    // width: 100%;
-    // height: 100%;
-    // margin-bottom: 50px;
-    // display: flex;
-    // flex-direction: column;
-    // overflow-x: hidden;
-    // flex: 1 0 auto;
 }

@@ -47,7 +47,7 @@ const Nav = (props) => {
         <ul>
           <li>
             {/* Active Tab Styling for Default Link on Mobile */}
-            <Link href="#services" activeClass={styles.Nav__links_active } className={isMobile && activeTab == 'services' ? styles.Nav__mobile : null} to="services" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>
+            <Link href="#services" activeClass={styles.Nav__links_active } className={isMobile && activeTab === 'services' ? styles.Nav__mobile : null} to="services" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>
           </li>
           <li>
           {isMobile && activeTab === 'about' ?

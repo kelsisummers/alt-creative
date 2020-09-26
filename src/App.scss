@@ -44,7 +44,6 @@ $xlarge: 1920px;
 html {
   background-color: $backgroundColor;
   font-size: 16px;
-  // width: 100vw;
   @include tablet-landscape {
     font-size: 14px;
   } 
@@ -52,8 +51,6 @@ html {
 
 body {
   font-family: 'proxima-nova', sans-serif;
-  // width: 100vw;
-  // height: 100vh;
 }
 
 h1 {
@@ -83,16 +80,16 @@ p {
   font-weight: 300;
 }
 
-.App {
-  // display: flex;
-  // flex-direction: column;
-  // min-height: 100vh;
-  // width: 100vw;
+li {
+  font-weight: 300;
+  font-size: 1rem;
+}
 
+.App {
+  overflow: hidden;
   display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
-    // height: 100vh;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
 }
 

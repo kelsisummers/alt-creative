@@ -4,7 +4,7 @@ import styles from './Main.module.scss';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
 import About from '../../components/About';
-import Contact from '../../components/Contact';
+import Contact from '../../components/Contact/Contact';
 // import Footer from '../../components/Footer'
 
 const Main = (props) => {
