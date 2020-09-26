@@ -1,34 +1,31 @@
 @import '../../App.scss';
 
 .About {
-  // width: 100%;
-  // display: flex;
-  // flex-flow: column wrap;
-  // flex: 1 40vw;
-  flex: 1 auto;
+  flex: 1 0 auto;
   height: 40vw;
-  position: relative;
-  padding-top: 200px;
+  padding-top: 150px;
   @include mobile {
-    padding-top: 140px;
+    padding-top: 30px;
+    height: auto;
   }
 
   &__animation {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: absolute;
     @include mobile {
       display: none;
     }
   }
 
   &__content {
+    position: relative;
+    bottom: 90%;
     display: flex;
     flex-flow: row wrap;
-    margin-top: 3%;
     @include mobile {
       flex-direction: column;
+      margin-top: 5%;
     }
 
     img {
@@ -49,32 +46,23 @@
       margin: 0 20px 0 7%;
       flex: 1;
       align-self: flex-end;
+      p {
+        font-size: 1.25rem;
+      }
       @include desktop {
         width: 35%;
         p {
-          font-size: 1.25rem;
-        }
-      }
-      @media only screen and (min-width: $medium) {
-        p {
           font-size: 1rem;
         }
-
       }
       @media only screen and (min-width: $small) and (max-width: $medium) {
         width: 38%;
-        p {
-          font-size: .86rem;
-        }
       }
       @include mobile {
         width: 90%;
         min-width: 280px;
         max-width: 570px;
         margin: 7% auto 0 auto;
-        p {
-          font-size: 1rem;
-        }
       }
     }
   }

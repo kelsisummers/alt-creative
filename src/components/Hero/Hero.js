@@ -8,10 +8,10 @@ export default class Hero extends Component {
   componentDidMount(props) {
     // Calls createPath Animation Function from Props
     const { createPath } = this.props;
-    createPath('hero', 5000, 0, 5);
+    createPath('hero', 5000, 0, 3);
     
     // Resizes SVG Animation
-    window.addEventListener('resize', createPath('hero', 5000, 0, 5));
+    window.addEventListener('resize', createPath('hero', 5000, 0, 3));
   }
   render() {
     return (

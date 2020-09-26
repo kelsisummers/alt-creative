@@ -106,7 +106,6 @@ export default class App extends Component {
   render(){
     return (
       <div className="App">
-        <header className="App-header"></header>
         <Nav activeTab={this.state.activeTab} handleClick={this.handleClick} checkMobile={this.checkMobile} isMobile={this.state.isMobile}/>
         <Main createPath={this.createPath} getWidth={this.getWidth} activeTab={this.state.activeTab} isMobile={this.state.isMobile}/>
         <Footer />

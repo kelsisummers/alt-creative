@@ -1,56 +1,71 @@
 @import '../../App.scss';
 
 .Services {
-  // width: 100%;
-  // flex: 1 25vw;
-  // flex-flow: column wrap;
-  // justify-content: flex-end;
-  flex: 1 auto;
-  display: flex;
-  position: relative;
-  height: 25vw;
-  padding-top: 200px;
+  height: 30vw;
+  flex: 1 0 auto;
+  padding-top: 150px;
   @include mobile {
-    padding-top: 140px;
+    padding-top: 30px;
+    height: auto;
   }
 
   &__container {
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: baseline;
-    // position: relative;
     @include mobile {
       flex-flow: column wrap;
     }
   }
 
   &__header {
-    width: 10%;
-    align-self: auto;
+    @media only screen and (max-width: 1300px) {
+      margin-top: -10%;
+    }
+    @media only screen and (max-width: 1200px) {
+      margin-top: -15%;
+    }
   }
 
   &__copy {
-    width: 81%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 30%;
-    right: 0;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    position: relative;
+    bottom: -14%;
+    width: 100%;
+    height: 70%;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media only screen and (min-width: 720px) and (max-width: 1300px) {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      bottom: 4%;
+    }
+
     @include mobile {
+      display: unset;
       flex-flow: column wrap;
       margin-left: 5%;
+      margin-right: 5%;
       padding-top: 2rem;
-      // position: inherit;
       bottom: unset;
       left: 0;
+      position: inherit;
+      height: auto;
     }
 
     &_col {
       flex: 1 30%;
       padding-right: 1.5rem;
-      max-width: 350px;
+      max-width: 300px;
+      min-width: 250px;
+      @include tablet {
+        li {
+          font-weight: 300;
+        }
+      }
       @include mobile {
         padding-top: 1rem;
       }
@@ -61,8 +76,8 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: absolute;
-    top: 200px;
+    position: relative;
+    top: -90%;
     @include mobile {
       display: none;
     }

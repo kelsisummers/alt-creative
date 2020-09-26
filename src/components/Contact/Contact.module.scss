@@ -3,16 +3,11 @@
 @import '../../App.scss';
 
 .Contact {
-  // width: 100vw;
-  // flex: 1 15vw;
-  // height: 15vw;
-  display: flex;
-  flex: 1 auto;
-  flex-direction: column;
   position: relative;
   padding-top: 200px;
   @include mobile {
-    padding-top: 140px;
+    padding-top: 30px;
+    height: auto;
   }
 
   &__animation {
@@ -20,7 +15,7 @@
     height: 100%;
     overflow: hidden;
     position: absolute;
-    top: 27%;
+    z-index: -10;
     @include mobile {
       display: none;
     }
@@ -63,7 +58,7 @@
     flex-direction: column;
     width: 40%;
     margin: 0 auto 0 auto;
-    z-index: 500;
+    z-index: 1000;
     @include mobile {
       width: 90%;
     }
