@@ -118,7 +118,6 @@ export default class Contact extends Component {
   }
 
   handleFieldChange(fieldName, value) {
-
     const { form } = this.state;
     const newForm = { ...form, [fieldName]: value };
     this.setState({ form: newForm });

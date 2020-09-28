@@ -47,22 +47,47 @@ const Nav = (props) => {
         <ul>
           <li>
             {/* Active Tab Styling for Default Link on Mobile */}
-            <Link href="#services" activeClass={styles.Nav__links_active } className={isMobile && activeTab === 'services' ? styles.Nav__mobile : null} to="services" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Services</Link>
+            <Link 
+              href="#services" 
+              activeClass={ styles.Nav__links_active } 
+              className={ isMobile && activeTab === 'services' ? styles.Nav__mobile : null } 
+              to="services" 
+              spy={true} 
+              hashSpy={true} 
+              smooth={true} 
+              offset={50} 
+              duration={500} 
+              onClick={handleClick}>
+              Services
+            </Link>
           </li>
           <li>
-          {isMobile && activeTab === 'about' ?
-            <Link href="#about" activeClass={styles.Nav__links_active } className={styles.Nav__mobile}  to="about" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link>
-            :
-            <Link href="#about" activeClass={styles.Nav__links_active } to="about" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>About</Link>}
+            <Link href="#about" 
+              activeClass={ styles.Nav__links_active } 
+              className={ isMobile && activeTab === 'about' ? styles.Nav__mobile : null }
+              to="about"
+              spy={true}
+              hashSpy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              onClick={handleClick}>
+              About
+            </Link>
           </li>
           <li>
-            {isMobile && activeTab === 'contact' ?
-            <Link href="#contact" activeClass={styles.Nav__links_active } className={styles.Nav__mobile} to="contact" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>
-            :
-            <Link href="#contact" activeClass={styles.Nav__links_active } to="contact" spy={true} hashSpy={true} smooth={true} offset={50} duration={500} onClick={handleClick}>Contact</Link>}
-
-
-
+            <Link href="#contact" 
+                activeClass={ styles.Nav__links_active } 
+                className={ isMobile && activeTab === 'contact' ? styles.Nav__mobile : null }
+                to="contact"
+                spy={true}
+                hashSpy={true}
+                smooth={true}
+                offset={50}
+                duration={500}
+                onClick={handleClick}>
+                Contact
+              </Link>
           </li>
         </ul>
       </div>
